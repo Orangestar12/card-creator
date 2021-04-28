@@ -194,6 +194,7 @@ document.querySelector('#typeButton').addEventListener('click', () => {
 
 document.querySelector('#render').addEventListener('click', () => {
     card.background.style.margin = '0';
+    document.body.style.overflowY = 'hidden';
     html2canvas(card.background, {
         allowTaint: true,
         width: 480,
@@ -204,4 +205,5 @@ document.querySelector('#render').addEventListener('click', () => {
         document.body.appendChild(canvas);
     });
     card.background.style.margin = 'auto';
+    document.body.style.overflowY = 'initial';
 })
