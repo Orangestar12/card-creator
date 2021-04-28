@@ -1,0 +1,159 @@
+* {
+    position: relative;
+    box-sizing: border-box;
+}
+
+html { margin: 8px; }
+
+body {
+    max-width: 640px;
+    margin: auto;
+    font: 14pt sans-serif;
+}
+.container { margin: 1em 0; }
+.centered { text-align: center; }
+.hidden { display: none; }
+
+input[type='number'] {
+    width: 4em;
+}
+
+#card-container {
+    /* position: absolute; */
+    margin: auto;
+    width: 5in;
+    height: 7in;
+    background: rgb(146, 117, 42);
+    outline: 4px groove grey;
+    overflow: hidden;
+    transform-origin: top left;
+}
+
+.title {
+    height: 50px;
+    background-color: #fbbc1e;
+    margin: 10px 0;
+    padding: 6px 12px;
+    font-size: 24pt;
+    border-bottom: 4px solid;
+    border-color:rgba(187, 137, 13, 0.8);
+    z-index: 1000;
+    white-space: pre;
+    overflow: hidden;
+}
+.title > span {
+    transform-origin: left;
+}
+
+#card-container.dark .title {
+    color: white;
+}
+
+.type {
+    position: absolute;
+    top: 2px;
+    right: 20px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-image: url('res/binding_icons/genesis_a.png');
+    background-size: cover;
+    background-position: center;
+    background-color: #424242;
+    color: white;
+    border: 4px solid #333;
+    z-index: 999999999; /* just fuck it, you know? */
+    cursor: pointer;
+}
+.typetitle {
+    position: absolute;
+    top: 50px;
+    right: 44px;
+    transform: translate(50%);
+    font-size: 12pt;
+    text-transform: capitalize;
+    z-index: 999999999;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+}
+/* .dark .typetitle {
+    color: black;
+    text-shadow: 1px 1px 1px white;
+} */
+
+.image {
+    display: block;
+    background-color: black;
+    border: 6px solid rgba(255,255,255,0.6);
+    height: 300px;
+    width: 90%;
+    margin: auto;
+    background-image: url('sample_image.jpg');
+    background-clip: padding-box;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+}
+
+.highlight {
+    border-color: rgb(255,0,0);
+    border-style: dashed;
+}
+
+.franchise {
+    margin: 12px 0;
+    font-size: 20px;
+    padding: 8px 12px;
+    background: rgba(255,255,255,0.6);
+}
+
+#card-container.dark .franchise {
+    color: white;
+    background: rgba(20,20,20,0.6)
+}
+
+.description {
+    height: 230px;
+    border: 2px solid rgba(255,255,255,0.6);
+    background: rgba(255,255,255,0.4);
+    width: 90%;
+    margin: auto;
+    padding: 8px;
+}
+#card-container.dark .description {
+    color: white;
+    background: rgba(20,20,20,0.4);
+    border-color: rgba(20,20,20,0.6);
+}
+
+#form-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#form-container div {
+    margin: 0 6px;
+}
+
+.no > input {
+    width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.icon_gallery {
+    background: #333;
+    height: 200px;
+    overflow-y: scroll;
+}
+.icon_gallery > img {
+    max-height: 64px;
+}
+
+#render {
+    font-size: 20pt;
+    height: auto;
+}
