@@ -41,15 +41,15 @@ function loadFile(e) {
 
         reader.addEventListener('load', () => {
             let savedCard = JSON.parse(reader.result);
-    
-            card.title.textContent = savedCard.title;
+
+            card.title.querySelector('span').textContent = savedCard.title;
             imgDrop.style.backgroundImage = savedCard.image;
             console.log(savedCard.image);
             colorChanger.value = savedCard.color;
             typeDrop.style.backgroundImage = savedCard.typeImg;
-            document.querySelector('.typetitle').textContent = savedCard.type,
-            document.querySelector('.franchise').textContent = savedCard.franchise,
-            document.querySelector('.description').textContent = savedCard.description,
+            document.querySelector('.typetitle').textContent = savedCard.type;
+            document.querySelector('.franchise').textContent = savedCard.franchise;
+            document.querySelector('.description').textContent = savedCard.description;
             inputs.squish.value = savedCard.squish;
             darkToggle.checked = savedCard.darkMode;
 
