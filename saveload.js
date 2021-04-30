@@ -17,27 +17,15 @@ function download(filename, text) {
 }
 
 function saveFile() {
-    // fix description due to textcontent shit
-    let description = document.querySelector('.description')
-
-    console.log(description);
-    description = description.innerHTML
-        // remove empty line breaks
-        .replace('<div><br></div>','\n')
-        // remove div tags
-        .replace(/\<div\>(.*?)\<\/div\>/g,'\n$1')
-        // remove spans
-        .replace(/\<span(.*?)>(.*?)<\/span>/g, '$2')
-    console.log(description);
 
     let savedCard = {
         title: card.title.textContent,
         image: imgDrop.style.backgroundImage,
         color: colorChanger.value,
         typeImg: typeDrop.style.backgroundImage,
-        type: document.querySelector('.typetitle').textContent,
-        franchise: document.querySelector('.franchise').textContent,
-        description: description,
+        type: document.querySelector('.typetitle').innerText,
+        franchise: document.querySelector('.franchise').innerText,
+        description: document.querySelector('.description').innerText,
         squish: inputs.squish.value,
         darkMode: darkToggle.checked
     }
