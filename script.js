@@ -14,7 +14,8 @@ const imgDrop = document.querySelector('.image'),
         "bg": document.querySelector('#bgUpload'),
         "type": document.querySelector('#typeUpload'),
         "squish": document.querySelector('#squish'),
-        "align": document.querySelector('#align')
+        "align": document.querySelector('#align'),
+        "alignNumerical": document.querySelector('#alignNumerical')
     };
 
 function setRGB() {
@@ -187,7 +188,15 @@ document.querySelector('#scrollReset').addEventListener('click', () => {
 
 // card image alignment
 
-inputs.align.addEventListener('change', reAlignImage);
+inputs.align.addEventListener('change', () => {
+    inputs.alignNumerical.value = inputs.align.value;
+    reAlignImage();
+});
+
+inputs.alignNumerical.addEventListener('change', () => {
+    inputs.align.value = inputs.alignNumerical.value;
+    reAlignImage();
+});
 
 // dark mode toggle
 

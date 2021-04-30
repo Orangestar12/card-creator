@@ -56,9 +56,9 @@ function loadFile(e) {
             document.querySelector('.franchise').textContent = savedCard.franchise;
             document.querySelector('.description').textContent = savedCard.description;
 
-            inputs.align.value = savedCard.alignment;
+            inputs.align.value = inputs.alignNumerical.value = savedCard.alignment;
             document.querySelector('#axis').value = savedCard.alignmentAxis;
-            
+
             darkToggle.checked = savedCard.darkMode;
 
             // document.querySelector('input[data-align=\'' + savedCard.alignment + '\']').checked = true; // doesn't work lol
