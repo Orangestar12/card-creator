@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="main.css" />
 </head>
 <body>
+    <p class="centered"><button class="save big">Save Card</button> <button class="big"><label for="loadUpload">Load Card</label></button></p>
     <div id="card-container" class="container">
         <div class="title"><span style="display: inline-block" contenteditable="true">Card Title</span></div>
         <label for="bgUpload" class="image"></label>
@@ -488,13 +489,15 @@
         <div>Title Squish: <input type="number" id="squish" value="100" />%<br/><button id="scrollReset">Reset Title Scroll (CLICK ME FIRST)</button></div>
     </div>
     <div class="container centered">
-        <p><button id="render">Render!</button></p>
+        <p><button class="big save">Save Card</button> <button id="render" class="big">Render Image</button></p>
     </div>
     <div class="no">
         <input type="file" name="typeUpload" id="typeUpload" />
         <input type="file" name="bgUpload" id="bgUpload" />
+        <input type="file" name="loadUpload" id="loadUpload" />
     </div>
     <script src="html2canvas.min.js"></script>
     <script src="script.js"></script>
+    <script src="saveload.js"></script>
 </body>
 </html>

@@ -177,12 +177,16 @@ document.querySelector('#scrollReset').addEventListener('click', () => {
 
 // dark mode toggle
 
-darkToggle.addEventListener('change', () => {
+function toggleDarkness() {
     if (darkToggle.checked) {
         card.background.classList.add('dark');
     } else {
         card.background.classList.remove('dark');
     }
+}
+
+darkToggle.addEventListener('change', () => {
+    toggleDarkness();
     setRGB();
 });
 
