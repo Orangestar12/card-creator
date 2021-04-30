@@ -21,7 +21,13 @@ function saveFile() {
     let description = document.querySelector('.description')
 
     console.log(description);
-    description = description.innerHTML.replace('<div><br></div>','\n').replace(/\<div\>(.*?)\<\/div\>/g,'\n$1');
+    description = description.innerHTML
+        // remove empty line breaks
+        .replace('<div><br></div>','\n')
+        // remove div tags
+        .replace(/\<div\>(.*?)\<\/div\>/g,'\n$1')
+        // remove spans
+        .replace(/\<span(.*?)>(.*?)<\/span>/g, '$2')
     console.log(description);
 
     let savedCard = {
