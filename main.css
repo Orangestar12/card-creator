@@ -119,6 +119,7 @@ input[type='number'] {
     width: 90%;
     margin: auto;
     padding: 8px;
+    white-space: pre-wrap;
 }
 #card-container.dark .description {
     color: white;

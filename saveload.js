@@ -17,6 +17,13 @@ function download(filename, text) {
 }
 
 function saveFile() {
+    // fix description due to textcontent shit
+    let description = document.querySelector('.description')
+
+    console.log(description);
+    description = description.innerHTML.replace('<div><br></div>','\n').replace(/\<div\>(.*?)\<\/div\>/g,'\n$1');
+    console.log(description);
+
     let savedCard = {
         title: card.title.textContent,
         image: imgDrop.style.backgroundImage,
@@ -24,7 +31,7 @@ function saveFile() {
         typeImg: typeDrop.style.backgroundImage,
         type: document.querySelector('.typetitle').textContent,
         franchise: document.querySelector('.franchise').textContent,
-        description: document.querySelector('.description').textContent,
+        description: description,
         squish: inputs.squish.value,
         darkMode: darkToggle.checked
     }
@@ -44,7 +51,6 @@ function loadFile(e) {
 
             card.title.querySelector('span').textContent = savedCard.title;
             imgDrop.style.backgroundImage = savedCard.image;
-            console.log(savedCard.image);
             colorChanger.value = savedCard.color;
             typeDrop.style.backgroundImage = savedCard.typeImg;
             document.querySelector('.typetitle').textContent = savedCard.type;
