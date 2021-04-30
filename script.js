@@ -33,7 +33,7 @@ function setRGB() {
         hsl.l -= 5;
 
     card.background.style.backgroundColor = 'hsl(' + hsl.h + ',' + hsl.s +'%,' + hsl.l + '%)';
-    card.title.style.borderColor = 'rgba(' + (rgb[0] -10).toString() + ',' + (rgb[1] - 10).toString() + ',' + (rgb[2] - 10).toString() + ',0.8)'
+    card.title.style.borderColor = 'rgba(' + (rgb[0] - 40).toString() + ',' + (rgb[1] - 40).toString() + ',' + (rgb[2] - 40).toString() + ',0.8)'
 }
 
 // helper funcs
