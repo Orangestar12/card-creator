@@ -149,8 +149,16 @@ input[type='number'] {
     background: #333;
     height: 200px;
     overflow-y: scroll;
+    color: white;
+    font-weight: bold;
 }
-.icon_gallery > img {
+
+.icon_gallery > p {
+    /* width: 100%; */
+    display: inline-block;
+}
+
+.icon_gallery img {
     max-height: 64px;
 }
 
