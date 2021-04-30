@@ -56,12 +56,10 @@ function loadFile(e) {
             document.querySelector('.franchise').textContent = savedCard.franchise;
             document.querySelector('.description').textContent = savedCard.description;
 
-            inputs.align.value = inputs.alignNumerical.value = savedCard.alignment;
-            document.querySelector('#axis').value = savedCard.alignmentAxis;
+            inputs.align.value = inputs.alignNumerical.value = savedCard.alignment ? savedCard.alignment : "50";
+            document.querySelector('#axis').value = savedCard.alignmentAxis ? savedCard.alignmentAxis : "Y";
 
             darkToggle.checked = savedCard.darkMode;
-
-            // document.querySelector('input[data-align=\'' + savedCard.alignment + '\']').checked = true; // doesn't work lol
 
             toggleDarkness();
             setRGB();
