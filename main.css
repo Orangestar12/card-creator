@@ -127,13 +127,16 @@ input[type='number'] {
     border-color: rgba(20,20,20,0.6);
 }
 
-#form-container {
+.flex {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
-#form-container div {
-    margin: 0 6px;
+#form-container > div {
+    margin: 3px;
+    padding: 3px;
+    background: #EEE;
 }
 
 .no > input {
@@ -165,4 +168,13 @@ input[type='number'] {
 button.big {
     font-size: 20pt;
     height: auto;
+}
+
+.align {
+    width: 72px; /* 16 * 3 + (4 * 2) * 3 */
+    margin: auto;
+}
+.align input {
+    width: 16px;
+    margin: 4px;
 }

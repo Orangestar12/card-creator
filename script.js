@@ -13,7 +13,8 @@ const imgDrop = document.querySelector('.image'),
     inputs = {
         "bg": document.querySelector('#bgUpload'),
         "type": document.querySelector('#typeUpload'),
-        "squish": document.querySelector('#squish')
+        "squish": document.querySelector('#squish'),
+        "align": document.querySelector('#align')
     };
 
 function setRGB() {
@@ -34,6 +35,13 @@ function setRGB() {
 
     card.background.style.backgroundColor = 'hsl(' + hsl.h + ',' + hsl.s +'%,' + hsl.l + '%)';
     card.title.style.borderColor = 'rgba(' + (rgb[0] - 40).toString() + ',' + (rgb[1] - 40).toString() + ',' + (rgb[2] - 40).toString() + ',0.8)'
+}
+
+function reAlignImage() {
+    if (document.querySelector('#axis').value == 'Y')
+        imgDrop.style.backgroundPosition = '50% ' + inputs.align.value + '%';
+    else
+        imgDrop.style.backgroundPosition = inputs.align.value + '% 50%';
 }
 
 // helper funcs
@@ -167,6 +175,8 @@ function setImages(url, element) {
 
 colorChanger.addEventListener('change', setRGB);
 
+// title squish stuff
+
 inputs.squish.addEventListener('change', () => {
     card.title.childNodes[0].style.transform = "scaleX(" + inputs.squish.value/100 + ")";
 })
@@ -174,6 +184,10 @@ inputs.squish.addEventListener('change', () => {
 document.querySelector('#scrollReset').addEventListener('click', () => {
     card.title.scrollLeft = 0;
 });
+
+// card image alignment
+
+inputs.align.addEventListener('change', reAlignImage);
 
 // dark mode toggle
 

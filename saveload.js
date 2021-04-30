@@ -27,7 +27,9 @@ function saveFile() {
         franchise: document.querySelector('.franchise').innerText,
         description: document.querySelector('.description').innerText,
         squish: inputs.squish.value,
-        darkMode: darkToggle.checked
+        darkMode: darkToggle.checked,
+        alignment: inputs.align.value,
+        alignmentAxis: document.querySelector('#axis').value
     }
 
     let saveString = JSON.stringify(savedCard);
@@ -53,10 +55,17 @@ function loadFile(e) {
             document.querySelector('.typetitle').textContent = savedCard.type;
             document.querySelector('.franchise').textContent = savedCard.franchise;
             document.querySelector('.description').textContent = savedCard.description;
+
+            inputs.align.value = savedCard.alignment;
+            document.querySelector('#axis').value = savedCard.alignmentAxis;
+            
             darkToggle.checked = savedCard.darkMode;
+
+            // document.querySelector('input[data-align=\'' + savedCard.alignment + '\']').checked = true; // doesn't work lol
 
             toggleDarkness();
             setRGB();
+            reAlignImage();
 
         });
 
