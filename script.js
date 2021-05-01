@@ -255,8 +255,8 @@ document.querySelector('#render').addEventListener('click', () => {
         scrollY: -window.scrollY
     }).then(function(canvas) {
         // document.body.appendChild(canvas); // uncomment to debug canvas
-        var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-        download(card.title.innerText + '.png', image);
+        var image = canvas.toDataURL("image/png");//.replace("image/png", "image/octet-stream");
+        download(card.title.innerText + '.png', image, true);
         canvas.remove();
     });
     card.background.style.margin = 'auto';
