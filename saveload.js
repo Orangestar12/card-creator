@@ -23,7 +23,8 @@ function saveFile() {
     // if this looks hacky, it is. Blame `innerText` being awful with `<div><br></div>.
     document.querySelector('.description').innerHTML = 
         document.querySelector('.description').innerHTML
-        .replace(/<div><br><\/div>/g, '<br>')
+        .innerHTML.replace(/<div><br><\/div>/g, '\n')
+        .replace(/<div>(.*?)<\/div>/g, '$1\n')
 
     let savedCard = {
         title: card.title.textContent,
@@ -89,6 +90,10 @@ function loadFile(e) {
                 typeDrop.style.backgroundImage = savedCard.typeImg;
             }
 
+            if (savedCard.description.lastIndexOf('\n') === savedCard.description.length) {
+                savedCard.description = savedCard.description.slice(0, savedCard.description.length - 1);
+            }
+
             card.title.childNodes[0].textContent = savedCard.title;
             inputs.squish.value = savedCard.squish;
             card.title.childNodes[0].style.transform = "scaleX(" + inputs.squish.value/100 + ")";
@@ -97,7 +102,7 @@ function loadFile(e) {
 
             document.querySelector('.typetitle').textContent = savedCard.type;
             document.querySelector('.franchise').textContent = savedCard.franchise;
-            document.querySelector('.description').textContent = savedCard.description;
+            document.querySelector('.description').innerHTML = '<div>' + savedCard.description + '</div>';
 
             inputs.align.value = inputs.alignNumerical.value = savedCard.alignment ? savedCard.alignment : "50";
             document.querySelector('#axis').value = savedCard.alignmentAxis ? savedCard.alignmentAxis : "Y";
