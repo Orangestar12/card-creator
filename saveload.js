@@ -23,7 +23,7 @@ function saveFile() {
     // if this looks hacky, it is. Blame `innerText` being awful with `<div><br></div>.
     document.querySelector('.description').innerHTML = 
         document.querySelector('.description').innerHTML
-        .innerHTML.replace(/<div><br><\/div>/g, '\n')
+        .replace(/<div><br><\/div>/g, '\n')
         .replace(/<div>(.*?)<\/div>/g, '$1\n')
 
     let savedCard = {
