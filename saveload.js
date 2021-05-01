@@ -21,8 +21,9 @@ function download(filename, text, image) {
 
 function saveFile() {
     // if this looks hacky, it is. Blame `innerText` being awful with `<div><br></div>.
-    document.querySelector('.description').innerHTML = document.querySelector('.description')
-                                                        .innerHTML.replace('<div><br></div>', '<br>');
+    document.querySelector('.description').innerHTML = 
+        document.querySelector('.description').innerHTML
+        .replace(/<div><br><\/div>/g, '<br>')
 
     let savedCard = {
         title: card.title.textContent,
