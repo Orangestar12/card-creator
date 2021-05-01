@@ -163,6 +163,7 @@ input[type='number'] {
 
 .icon_gallery img {
     max-height: 64px;
+    cursor: pointer;
 }
 
 button.big {

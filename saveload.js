@@ -38,6 +38,15 @@ function saveFile() {
 
 }
 
+function convertHTTPUri(e) {
+    return getBase64FromUrl(
+        e.slice(
+            e.indexOf('http'),
+            e.indexOf('")')
+        )
+    );
+}
+
 function loadFile(e) {
     if (e.target.files) {
         let reader = new FileReader();
@@ -45,13 +54,40 @@ function loadFile(e) {
         reader.addEventListener('load', () => {
             let savedCard = JSON.parse(reader.result);
 
+            // backwards compatibility: is image a url?
+            if (savedCard.image.indexOf('url("http') === 0 || savedCard.image.indexOf('url("file') === 0) {
+                console.log('Converting ugly HTTP urls to data URI! (Background)');
+                // data uris wont taint canvases
+
+                convertHTTPUri(savedCard.image).then(
+                    (result) => {
+                        imgDrop.style.backgroundImage = 'url("' + result + '")';
+                    }
+                );
+
+            } else {
+                // load existing data uri
+                imgDrop.style.backgroundImage = savedCard.image;
+            }
+
+            if (savedCard.typeImg.indexOf('url("http') === 0 || savedCard.typeImg.indexOf('url("file') === 0) {
+                console.log('Converting ugly HTTP urls to data URI! (Type)');
+                
+                convertHTTPUri(savedCard.typeImg).then(
+                    (result) => {
+                        typeDrop.style.backgroundImage = 'url("' + result + '")';
+                    }
+                )
+            } else {
+                typeDrop.style.backgroundImage = savedCard.typeImg;
+            }
+
             card.title.childNodes[0].textContent = savedCard.title;
             inputs.squish.value = savedCard.squish;
             card.title.childNodes[0].style.transform = "scaleX(" + inputs.squish.value/100 + ")";
 
-            imgDrop.style.backgroundImage = savedCard.image;
             colorChanger.value = savedCard.color;
-            typeDrop.style.backgroundImage = savedCard.typeImg;
+
             document.querySelector('.typetitle').textContent = savedCard.type;
             document.querySelector('.franchise').textContent = savedCard.franchise;
             document.querySelector('.description').textContent = savedCard.description;

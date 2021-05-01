@@ -1,5 +1,20 @@
 'use strict';
 
+// https://stackoverflow.com/a/64929732/
+const getBase64FromUrl = async (url) => {
+    const data = await fetch(url);
+    const blob = await data.blob();
+    return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(blob); 
+        reader.onloadend = () => {
+            const base64data = reader.result;   
+            resolve(base64data);
+        }
+    });
+}
+  
+
 const imgDrop = document.querySelector('.image'),
     typeDrop = document.querySelector('.type'),
     colorChanger = document.querySelector('input[type=\'color\']'),
@@ -134,6 +149,12 @@ function preventDefaults (e) {
     });
 });
 
+for (let img of document.querySelector('.icon_gallery').querySelectorAll('img')) {
+    img.addEventListener('click', () => {
+        setImages(img.src, typeDrop);
+    });
+}
+
 // filedrop handler
 function handleImages(images, element) {
     getDataURLFromSource(
@@ -143,14 +164,18 @@ function handleImages(images, element) {
         }
     );
 }
+
 function setImages(url, element) {
-    element.style.backgroundImage = "url('" + url + "')";
+    getBase64FromUrl(url).then((result) => {
+        element.style.backgroundImage = "url('" + result + "')";
+    });
 }
 
 [imgDrop, typeDrop].forEach(element => {
     element.addEventListener('drop', (e) => {
         let url = e.dataTransfer.getData('text/plain');
         if (url) {
+            url;
             setImages(url, element);
         }
         else if (e.dataTransfer.files) {
@@ -223,13 +248,16 @@ document.querySelector('#render').addEventListener('click', () => {
     card.background.style.margin = '0';
     document.body.style.overflowY = 'hidden';
     html2canvas(card.background, {
-        allowTaint: true,
+        // allowTaint: true,
         width: 480,
         height: 672,
         scrollX: 0,
         scrollY: -window.scrollY
     }).then(function(canvas) {
-        document.body.appendChild(canvas);
+        // document.body.appendChild(canvas); // uncomment to debug canvas
+        var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+        download(card.title.innerText + '.png', image);
+        canvas.remove();
     });
     card.background.style.margin = 'auto';
     document.body.style.overflowY = 'initial';
