@@ -113,7 +113,7 @@ function loadFile(e) {
             inputs.saturate.value = inputs.satNumerical.value = savedCard.saturated ? savedCard.saturated : "50";
 
             inputs.font.value = savedCard.font ? savedCard.font : '14';
-            card.description.style.fontSize = inputs.font.value;
+            card.description.style.fontSize = inputs.font.value + 'pt';
 
             let color = hexToRGB(savedCard.color);
             for(let i=0;i<3;i++) {
