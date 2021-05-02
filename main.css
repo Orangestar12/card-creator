@@ -94,6 +94,9 @@ input[type='number'] {
     background-position: center;
     cursor: pointer;
 }
+#card-container.dark .image {
+    border: 6px solid rgba(20,20,20,0.4);
+}
 
 .highlight {
     border-color: rgb(255,0,0);
