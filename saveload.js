@@ -21,8 +21,8 @@ function download(filename, text, image) {
 
 function saveFile() {
     // if this looks hacky, it is. Blame `innerText` being awful with `<div><br></div>.
-    document.querySelector('.description').innerHTML = 
-        document.querySelector('.description').innerHTML
+    card.description.innerHTML = 
+        card.description.innerHTML
         .replace(/<div><br><\/div>/g, '\n')
         .replace(/<div>(.*?)<\/div>/g, '$1\n')
 
@@ -33,11 +33,13 @@ function saveFile() {
         typeImg: typeDrop.style.backgroundImage,
         type: document.querySelector('.typetitle').innerText,
         franchise: document.querySelector('.franchise').innerText,
-        description: document.querySelector('.description').innerText,
+        description: card.description.innerText,
         squish: inputs.squish.value,
         darkMode: darkToggle.checked,
         alignment: inputs.align.value,
-        alignmentAxis: document.querySelector('#axis').value
+        alignmentAxis: document.querySelector('#axis').value,
+        font: inputs.font.value,
+        saturated: inputs.saturate.checked
     }
 
     let saveString = JSON.stringify(savedCard);
@@ -102,12 +104,23 @@ function loadFile(e) {
 
             document.querySelector('.typetitle').textContent = savedCard.type;
             document.querySelector('.franchise').textContent = savedCard.franchise;
-            document.querySelector('.description').innerHTML = '<div>' + savedCard.description + '</div>';
+            card.description.innerHTML = '<div>' + savedCard.description + '</div>';
 
             inputs.align.value = inputs.alignNumerical.value = savedCard.alignment ? savedCard.alignment : "50";
             document.querySelector('#axis').value = savedCard.alignmentAxis ? savedCard.alignmentAxis : "Y";
 
             darkToggle.checked = savedCard.darkMode;
+            inputs.saturate.value = inputs.satNumerical.value = savedCard.saturated ? savedCard.saturated : "50";
+
+            inputs.font.value = savedCard.font ? savedCard.font : '14';
+
+            let color = hexToRGB(savedCard.color);
+            for(let i=0;i<3;i++) {
+                document.querySelector('#rgb' + ['R','G','B'][i])
+                    .value = color[
+                        ['r','g','b'][i]
+                    ];
+            };
 
             toggleDarkness();
             setRGB();

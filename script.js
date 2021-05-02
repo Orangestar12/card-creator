@@ -1,4 +1,37 @@
-'use strict';
+'use strict'; 
+
+const imgDrop = document.querySelector('.image'),
+    typeDrop = document.querySelector('.type'),
+    colorChanger = document.querySelector('input[type=\'color\']'),
+    darkToggle = document.querySelector('input.darkMode'),
+
+    card = {
+    "background": document.querySelector('#card-container'),
+    "title": document.querySelector('#card-container .title'),
+    "description": document.querySelector('.description')
+    },
+    
+    inputs = {
+        "bg": document.querySelector('#bgUpload'),
+        "type": document.querySelector('#typeUpload'),
+        "squish": document.querySelector('#squish'),
+        "align": document.querySelector('#align'),
+        "alignNumerical": document.querySelector('#alignNumerical'),
+        'font': document.querySelector('#font'),
+        'satNumerical': document.querySelector('#satNumerical'),
+        'saturate': document.querySelector('#saturate')
+    };
+
+const rgb = {};
+
+[
+    ['r', 'rgbR'],
+    ['g', 'rgbG'],
+    ['b', 'rgbB']
+].forEach(item => {
+    rgb[item[0]] = document.querySelector('#' + item[1]);
+    rgb[item[0]].setAttribute('data-rgb', item[0]);
+});
 
 // https://stackoverflow.com/a/64929732/
 const getBase64FromUrl = async (url) => {
@@ -13,25 +46,6 @@ const getBase64FromUrl = async (url) => {
         }
     });
 }
-  
-
-const imgDrop = document.querySelector('.image'),
-    typeDrop = document.querySelector('.type'),
-    colorChanger = document.querySelector('input[type=\'color\']'),
-    darkToggle = document.querySelector('input.darkMode'),
-
-    card = {
-    "background": document.querySelector('#card-container'),
-    "title": document.querySelector('#card-container .title')
-    },
-    
-    inputs = {
-        "bg": document.querySelector('#bgUpload'),
-        "type": document.querySelector('#typeUpload'),
-        "squish": document.querySelector('#squish'),
-        "align": document.querySelector('#align'),
-        "alignNumerical": document.querySelector('#alignNumerical')
-    };
 
 function setRGB() {
     card.title.style.backgroundColor = colorChanger.value;
@@ -41,16 +55,20 @@ function setRGB() {
     rgb = rgb.substr(4).split(")")[0].split(",");
 
     let hsl = RGBToHSL(rgb);
-    
-    hsl.s /= 2;
+
+    hsl.s *= (inputs.saturate.value / 100)
 
     if (darkToggle.checked)
         hsl.l += 5;
     else
         hsl.l -= 5;
+    
+    for (let r in rgb) {
+        rgb[r] -= 40;
+    }
 
     card.background.style.backgroundColor = 'hsl(' + hsl.h + ',' + hsl.s +'%,' + hsl.l + '%)';
-    card.title.style.borderColor = 'rgba(' + (rgb[0] - 40).toString() + ',' + (rgb[1] - 40).toString() + ',' + (rgb[2] - 40).toString() + ',0.8)'
+    card.title.style.borderColor = 'rgba(' + (rgb[0]).toString() + ',' + (rgb[1]).toString() + ',' + (rgb[2]).toString() + ',0.8)'
 }
 
 function reAlignImage() {
@@ -117,6 +135,39 @@ function RGBToHSL(rgb) {
     return {"h":h, "s":s, "l":l};
 }
 
+function hexToRGB(h) {
+    let r = 0, g = 0, b = 0;
+  
+    // 3 digits
+    if (h.length == 4) {
+        r = "0x" + h[1] + h[1];
+        g = "0x" + h[2] + h[2];
+        b = "0x" + h[3] + h[3];
+  
+    // 6 digits
+    } else if (h.length == 7) {
+        r = "0x" + h[1] + h[2];
+        g = "0x" + h[3] + h[4];
+        b = "0x" + h[5] + h[6];
+    }
+    
+    return {"r": parseInt(r), "g": parseInt(g), "b": parseInt(b)};
+}
+
+function RGBToHex(color) {
+    let r = color.r.toString(16);
+    let g = color.g.toString(16);
+    let b = color.b.toString(16);
+  
+    if (r.length == 1)
+        r = "0" + r;
+    if (g.length == 1)
+        g = "0" + g;
+    if (b.length == 1)
+        b = "0" + b;
+  
+    return "#" + r + g + b;
+}
 
 // filedrop stuff
 
@@ -196,10 +247,20 @@ function setImages(url, element) {
     });
 });
 
-
 // color change stuff
 
 colorChanger.addEventListener('change', setRGB);
+
+['r','g','b'].forEach(e => {
+    rgb[e].addEventListener('change', (e) => {
+        let color = hexToRGB(colorChanger.value);
+
+        color[e.target.getAttribute('data-rgb')] = parseInt(e.target.value);
+
+        colorChanger.value = RGBToHex(color);
+        setRGB();
+    })
+});
 
 // title squish stuff
 
@@ -238,7 +299,17 @@ darkToggle.addEventListener('change', () => {
     setRGB();
 });
 
-setRGB();
+// saturation
+
+inputs.saturate.addEventListener('change', () => {
+    inputs.satNumerical.value = inputs.saturate.value;
+    setRGB();
+});
+
+inputs.satNumerical.addEventListener('change', () => {
+    inputs.saturate.value = inputs.satNumerical.value;
+    setRGB();
+});
 
 document.querySelector('#typeButton').addEventListener('click', () => {
     document.querySelector('#typeContainer').classList.toggle('hidden');
@@ -262,3 +333,9 @@ document.querySelector('#render').addEventListener('click', () => {
     card.background.style.margin = 'auto';
     document.body.style.overflowY = 'initial';
 })
+
+inputs.font.addEventListener('change', () => {
+    card.description.style.fontSize = inputs.font.value + 'pt';
+});
+
+setRGB();

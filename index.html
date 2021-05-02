@@ -488,7 +488,13 @@
         <p style="font-weight:bold">These are not free assets. These images are taken from Steam's Big Picture Mode interface, a product of Valve. Do not use these icons in a commercial product.</p>
     </div>
     <div id="form-container" class="container flex centered">
-        <div>Change Card Color:<br/><input type="color" value="#fbbc1e"/></div>
+        <div>
+            Change Card Color:<br/>
+            <input type="color" value="#fbbc1e"/>
+            <input id="rgbR" type="number" min="0" max="255" value="251" step="1" />
+            <input id="rgbG" type="number" min="0" max="255" value="188" step="1" />
+            <input id="rgbB" type="number" min="0" max="255" value="30" step="1" />
+        </div>
         <div>Dark mode?<br/><input type="checkbox" class="darkMode" value="0"/></div>
         <div>Title Squish: <input type="number" id="squish" value="100" min="0" />%<br/><button id="scrollReset">Reset Title Scroll</button></div>
         <div>Align card image:
@@ -496,7 +502,15 @@
                 <option value="Y">Vertical (Image is too tall)</option>
                 <option value="X">Horizontal (Image is too wide)</option>
             </select><br/>
-            <input type="range" id="align" min="0" max="100" value="50"/> <input id="alignNumerical" type="number" min="0" max="100" value="50" />%
+            <input type="range" id="align" min="0" max="100" value="50" step="0.1" /> <input id="alignNumerical" type="number" min="0" max="100" value="50" step="0.1" />%
+        </div>
+        <div>Desc font size:<br/>
+            <input id="font" type="number" min="0" value="14" step="0.1"/>pt
+        </div>
+        <div>
+            Saturate card background<br/>
+            (Be careful it's not too bright.)<br/>
+            <input type="range" id="saturate" value="50" min="0" max="100" step="1"/> <input id="satNumerical" type="number" min="0" max="100" value="50" step="1" />%
         </div>
     </div>
     <div class="container centered">
