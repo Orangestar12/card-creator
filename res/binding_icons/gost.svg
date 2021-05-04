@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="512"
+   height="512"
+   viewBox="0 0 135.46666 135.46667"
+   version="1.1"
+   id="svg8"
+   inkscape:export-filename="C:\Users\orang\Desktop\gost.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90"
+   inkscape:version="1.0.2-2 (e86c870879, 2021-01-15)"
+   sodipodi:docname="gost.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#282828"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1"
+     inkscape:cx="231.88002"
+     inkscape:cy="263.33416"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     units="px"
+     inkscape:window-width="1267"
+     inkscape:window-height="1045"
+     inkscape:window-x="196"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       id="path1402"
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.999999px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 256 33.335938 C 193.1904 33.335938 126.30078 82.686302 126.30078 170.02148 L 126.30078 433.70703 C 126.30078 454.73084 139.20279 480.83064 158.72461 482.85352 C 173.8633 484.42221 175.93064 450.70703 191.15039 450.70703 C 206.37014 450.70703 208.35447 482.85352 223.57422 482.85352 C 238.79397 482.85352 240.78025 450.70703 256 450.70703 C 271.21975 450.70703 273.20603 482.85352 288.42578 482.85352 C 303.64553 482.85352 305.62986 450.70703 320.84961 450.70703 C 336.06936 450.70703 338.1367 484.42221 353.27539 482.85352 C 372.79721 480.83064 385.69922 458.72705 385.69922 433.70703 L 385.69922 170.02148 C 385.69922 83.275561 318.8096 33.335937 256 33.335938 z M 200.10938 130.5 A 25.499999 25.499999 0 0 1 200.25 130.5 A 25.499999 25.499999 0 0 1 225.75 156 A 25.499999 25.499999 0 0 1 200.25 181.5 A 25.499999 25.499999 0 0 1 174.75 156 A 25.499999 25.499999 0 0 1 200.10938 130.5 z M 311.60938 130.5 A 25.499999 25.499999 0 0 1 311.75 130.5 A 25.499999 25.499999 0 0 1 337.25 156 A 25.499999 25.499999 0 0 1 311.75 181.5 A 25.499999 25.499999 0 0 1 286.25 156 A 25.499999 25.499999 0 0 1 311.60938 130.5 z "
+       transform="scale(0.26458333)" />
+  </g>
+</svg>
