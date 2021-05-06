@@ -7,7 +7,10 @@
     <meta name="viewport" content="initial-scale=0.6, minimum-scale=0.6, maximum-scale=0.6" /> <!-- yeah i know -->
 </head>
 <body>
-    <p class="centered"><button class="save big">Save Card</button> <button class="big"><label for="loadUpload">Load Card</label></button></p>
+    <p class="centered">
+        <button class="save big">Save Card</button>
+        <label for="loadUpload" class="button big">Load Card</label>
+        <button id="render" class="big">Render Image</button></p>
     <div id="card-container" class="container">
         <div class="title"><span style="display: inline-block" contenteditable="true">Card Title</span></div>
         <label for="bgUpload" class="image"></label>
@@ -515,9 +518,6 @@
             (Be careful it's not too bright.)<br/>
             <input type="range" id="saturate" value="50" min="0" max="100" step="1"/> <input id="satNumerical" type="number" min="0" max="100" value="50" step="1" />%
         </div>
-    </div>
-    <div class="container centered">
-        <p><button class="big save">Save Card</button> <button id="render" class="big">Render Image</button></p>
     </div>
     <div class="no">
         <input type="file" name="typeUpload" id="typeUpload" accept="image/*"/>

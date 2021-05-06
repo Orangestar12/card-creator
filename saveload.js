@@ -136,5 +136,5 @@ function loadFile(e) {
 document.querySelector('#loadUpload').addEventListener('change', loadFile);
 
 for (let button of saveButtons) {
-    button.addEventListener('click', saveFile);
+    button.addEventListener('click', saveFile, {'capture': true});
 }
