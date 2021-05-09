@@ -1,7 +1,5 @@
 'use strict';
 
-const saveButtons = document.querySelectorAll('.save');
-
 // https://stackoverflow.com/a/18197341
 function download(filename, text, image) {
     var element = document.createElement('a');
@@ -135,6 +133,4 @@ function loadFile(e) {
 
 document.querySelector('#loadUpload').addEventListener('change', loadFile);
 
-for (let button of saveButtons) {
-    button.addEventListener('click', saveFile, {'capture': true});
-}
+document.querySelectorAll('.save').addEventListener('click', saveFile, {'capture': true});

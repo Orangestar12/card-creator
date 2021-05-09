@@ -318,6 +318,10 @@ document.querySelector('#typeButton').addEventListener('click', () => {
 document.querySelector('#render').addEventListener('click', () => {
     card.background.style.margin = '0';
     document.body.style.overflowY = 'hidden';
+    document.querySelector("meta[name='viewport']").setAttribute(
+        'content',
+        'initial-scale=1, minimum-scale=1, maximum-scale=1'
+    );
     html2canvas(card.background, {
         // allowTaint: true,
         width: 480,
@@ -332,6 +336,10 @@ document.querySelector('#render').addEventListener('click', () => {
     });
     card.background.style.margin = 'auto';
     document.body.style.overflowY = 'initial';
+    document.querySelector("meta[name='viewport']").setAttribute(
+        'content',
+        'initial-scale=0.6, minimum-scale=0.6, maximum-scale=0.6'
+    );
 })
 
 inputs.font.addEventListener('change', () => {
