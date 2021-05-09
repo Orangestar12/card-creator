@@ -133,4 +133,4 @@ function loadFile(e) {
 
 document.querySelector('#loadUpload').addEventListener('change', loadFile);
 
-document.querySelectorAll('.save').addEventListener('click', saveFile, {'capture': true});
+document.querySelector('.save').addEventListener('click', saveFile, {'capture': true});
