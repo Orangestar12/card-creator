@@ -18,12 +18,6 @@ function download(filename, text, image) {
 }
 
 function saveFile() {
-    // if this looks hacky, it is. Blame `innerText` being awful with `<div><br></div>.
-    card.description.innerHTML = 
-        card.description.innerHTML
-        .replace(/<div><br><\/div>/g, '\n')
-        .replace(/<div>(.*?)<\/div>/g, '$1\n')
-
     let savedCard = {
         title: card.title.textContent,
         image: imgDrop.style.backgroundImage,
@@ -31,7 +25,7 @@ function saveFile() {
         typeImg: typeDrop.style.backgroundImage,
         type: document.querySelector('.typetitle').innerText,
         franchise: document.querySelector('.franchise').innerText,
-        description: card.description.innerText,
+        description: card.description.value.trimEnd(),
         squish: inputs.squish.value,
         darkMode: darkToggle.checked,
         alignment: inputs.align.value,
@@ -90,9 +84,9 @@ function loadFile(e) {
                 typeDrop.style.backgroundImage = savedCard.typeImg;
             }
 
-            if (savedCard.description.lastIndexOf('\n') === savedCard.description.length) {
-                savedCard.description = savedCard.description.slice(0, savedCard.description.length - 1);
-            }
+            // if (savedCard.description.trim('\n') === savedCard.description.length) {
+            //     savedCard.description = savedCard.description.slice(0, savedCard.description.length - 1);
+            // }
 
             card.title.childNodes[0].textContent = savedCard.title;
             inputs.squish.value = savedCard.squish;
@@ -102,7 +96,7 @@ function loadFile(e) {
 
             document.querySelector('.typetitle').textContent = savedCard.type;
             document.querySelector('.franchise').textContent = savedCard.franchise;
-            card.description.innerHTML = '<div>' + savedCard.description + '</div>';
+            card.description.value = savedCard.description;
 
             inputs.align.value = inputs.alignNumerical.value = savedCard.alignment ? savedCard.alignment : "50";
             document.querySelector('#axis').value = savedCard.alignmentAxis ? savedCard.alignmentAxis : "Y";
