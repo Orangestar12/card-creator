@@ -8,7 +8,8 @@ const imgDrop = document.querySelector('.image'),
     card = {
     "background": document.querySelector('#card-container'),
     "title": document.querySelector('#card-container .title'),
-    "description": document.querySelector('.description')
+    "description": document.querySelector('.description'),
+    "rarity": document.querySelector('#rarity')
     },
     
     inputs = {

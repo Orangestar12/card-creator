@@ -1,5 +1,12 @@
 'use strict';
 
+let rarities = [];
+let raritiesElms = document.querySelector('#rarity').options;
+for (let i=0; i < raritiesElms.length; i++) {
+    rarities.push(raritiesElms.value);
+};
+raritiesElms = undefined;
+
 // https://stackoverflow.com/a/18197341
 function download(filename, text, image) {
     var element = document.createElement('a');
@@ -26,6 +33,7 @@ function saveFile() {
         type: document.querySelector('.typetitle').innerText,
         franchise: document.querySelector('.franchise').innerText,
         description: card.description.value.trimEnd(),
+        rarity: card.rarity.value,
         squish: inputs.squish.value,
         darkMode: darkToggle.checked,
         alignment: inputs.align.value,
@@ -93,6 +101,22 @@ function loadFile(e) {
             card.title.childNodes[0].style.transform = "scaleX(" + inputs.squish.value/100 + ")";
 
             colorChanger.value = savedCard.color;
+            
+
+            if (
+                savedCard.rarity && // card has a rarity
+                rarities.find( // card rarity is in list
+                    (e) => {
+                        if (e == savedCard.rarity) {
+                            return true;
+                        }
+                    }
+                )
+            ) {
+                card.rarity.value = savedCard.rarity;
+            } else {
+                card.rarity.value = "0"
+            }
 
             document.querySelector('.typetitle').textContent = savedCard.type;
             document.querySelector('.franchise').textContent = savedCard.franchise;

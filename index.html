@@ -17,7 +17,14 @@
         <label for="typeUpload" class="type"></label>
         <div class="typetitle" contenteditable="true">ELEMENT</div>
         <div class="franchise" contenteditable="true">Franchise Data</div>
-        <div class="description" contenteditable="true"><div>Type the description of your card here.</div></div>
+        <textarea class="description">Type the description of your card here.</textarea>
+        <select id="rarity">
+            <option value="0">Common</option>
+            <option value="1">Uncommon</option>
+            <option value="2">Rare</option>
+            <option value="3">Epic</option>
+            <option value="4">Legendary</option>
+        </select>
     </div>
     <div class="container centered"><button id="typeButton">Show Type Icons</button><div id="typeContainer" class="hidden">
         <!-- sorry -->
