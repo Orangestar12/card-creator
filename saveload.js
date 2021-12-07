@@ -3,7 +3,7 @@
 let rarities = [];
 let raritiesElms = document.querySelector('#rarity').options;
 for (let i=0; i < raritiesElms.length; i++) {
-    rarities.push(raritiesElms.value);
+    rarities.push(raritiesElms[i].value);
 };
 raritiesElms = undefined;
 
@@ -102,7 +102,6 @@ function loadFile(e) {
 
             colorChanger.value = savedCard.color;
             
-
             if (
                 savedCard.rarity && // card has a rarity
                 rarities.find( // card rarity is in list
