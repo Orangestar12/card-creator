@@ -203,6 +203,9 @@ function preventDefaults (e) {
 for (let img of document.querySelector('.icon_gallery').querySelectorAll('img')) {
     img.addEventListener('click', () => {
         setImages(img.src, typeDrop);
+        if (img.alt) {
+            document.querySelector('.typetitle').textContent = img.alt.toUpperCase();
+        }
     });
 }
 
