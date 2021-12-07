@@ -121,6 +121,7 @@ body {
     font: inherit;
     resize: none;
     display: block;
+    white-space: pre-wrap;
 
     /* regular styles */
     height: 230px;
