@@ -204,6 +204,8 @@ select#rarity {
     bottom: 0.5px;
     font: 6pt sans-serif;
     text-align: right;
+    
+    min-width: 6ch;
 }
 select#rarity option {
     font-size: 14pt;
