@@ -200,7 +200,7 @@ select#rarity {
     text-shadow: 0 0 2px white;
     
     position: absolute;
-    right: 2px;
+    right: 0.25in;
     bottom: 0.5px;
     font: 6pt sans-serif;
     text-align: right;
