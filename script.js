@@ -236,8 +236,6 @@ function resizeImageFromUrl(url, callback) {
             x = canvas.toDataURL('image/png');
         }
 
-        console.log(x)
-
         callback(x);
 
         img.remove();
