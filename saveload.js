@@ -156,8 +156,14 @@ function loadFile(e) {
             reAlignImage();
 
         });
-
-        reader.readAsText(e.target.files[0]);
+        try {
+            reader.readAsText(e.target.files[0]);
+        } catch(e) {
+            if (!(e instanceof TypeError)) {
+                throw e;
+            }
+            // TypeError means the import file was cancelled.
+        }
     }
 }
 
