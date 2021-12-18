@@ -200,6 +200,52 @@ for (let img of document.querySelector('.icon_gallery').querySelectorAll('img'))
     });
 }
 
+function resizeImageFromUrl(url, callback) {
+    var img = document.createElement("img");
+        
+    img.onload = (e) => {
+        var canvas = document.createElement("canvas");
+    
+        var height = img.height;
+        var width = img.width;
+
+        var max_width = 420
+        var max_height = 300
+
+        if (width > height) {
+            if (width > max_width) {
+                height = height * (max_width / width);
+                width = max_width;
+            }
+        } else {
+            if (height > max_height) {
+                width = width * (max_height / height);
+                height = max_height;
+            }
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+
+        var ctx = canvas.getContext("2d");
+
+        ctx.drawImage(img, 0, 0, width, height);
+
+        let x = canvas.toDataURL('image/jpg');
+        if (x == undefined) {
+            x = canvas.toDataURL('image/png');
+        }
+
+        console.log(x)
+
+        callback(x);
+
+        img.remove();
+        canvas.remove();
+    }
+    img.src = url;
+}
+
 // filedrop handler
 function handleImages(images, element) {
     let imageFile = images[0];
@@ -207,40 +253,12 @@ function handleImages(images, element) {
     var reader = new FileReader();
 
     reader.onload = (e) => {
-        var img = document.createElement("img");
-        
-        img.onload = (e) => {
-            var canvas = document.createElement("canvas");
-        
-            var height = img.height;
-            var width = img.width;
-    
-            var max_width = 420
-            var max_height = 300
-
-            if (width > height) {
-                if (width > max_width) {
-                    height = height * (max_width / width);
-                    width = max_width;
-                }
-            } else {
-                if (height > max_height) {
-                    width = width * (max_height / height);
-                    height = max_height;
-                }
+        resizeImageFromUrl(
+            e.target.result,
+            (result) => {
+                element.style.backgroundImage = "url('" + result + "')";
             }
-
-            canvas.width = width;
-            canvas.height = height;
-
-            var ctx = canvas.getContext("2d");
-
-            ctx.drawImage(img, 0, 0, width, height);
-
-            var dataurl = canvas.toDataURL(imageFile.type);
-            element.style.backgroundImage = "url('" + dataurl + "')";
-        }
-        img.src = e.target.result;
+        );
     }
 
     reader.readAsDataURL(imageFile)

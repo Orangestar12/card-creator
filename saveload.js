@@ -71,13 +71,26 @@ function loadFile(e) {
 
                 convertHTTPUri(savedCard.image).then(
                     (result) => {
-                        imgDrop.style.backgroundImage = 'url("' + result + '")';
+                        imgDrop.style.backgroundImage = 'url("' + resizeImageFromUrl(result) + '")';
                     }
                 );
-
+            
             } else {
+                // detect old cards with url bit
+                if (savedCard.image.indexOf('url("data:') === 0) {
+                    savedCard.image = savedCard.image.slice(
+                        savedCard.image.indexOf('data:'),
+                        savedCard.image.indexOf('")')
+                    )
+                }
+
                 // load existing data uri
-                imgDrop.style.backgroundImage = savedCard.image;
+                resizeImageFromUrl(
+                    savedCard.image,
+                    (result) => {
+                        imgDrop.style.backgroundImage = 'url("' + result + '")';
+                    }
+                )
             }
 
             if (savedCard.typeImg.indexOf('url("http') === 0 || savedCard.typeImg.indexOf('url("file') === 0) {
