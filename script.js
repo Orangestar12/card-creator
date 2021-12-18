@@ -81,16 +81,7 @@ function reAlignImage() {
 
 // helper funcs
 
-function getDataURLFromSource(source, callback) {
-	let fr = new FileReader();
-	fr.addEventListener('load', function () {
-        callback(fr.result);
-	});
-	fr.readAsDataURL(source);
-}
-
 // https://css-tricks.com/converting-color-spaces-in-javascript/
-
 function RGBToHSL(rgb) {
     // Make r, g, and b fractions of 1
     let r = rgb[0] / 255;
@@ -186,7 +177,6 @@ function preventDefaults (e) {
     e.stopPropagation()
 }
 
-
 // technically we only need dragenter because we dont have any children but we'll
 // do this just in case
 ['dragenter', 'dragover'].forEach(eventName => {
@@ -212,12 +202,48 @@ for (let img of document.querySelector('.icon_gallery').querySelectorAll('img'))
 
 // filedrop handler
 function handleImages(images, element) {
-    getDataURLFromSource(
-        images[0],
-        function(x){
-            element.style.backgroundImage = "url('" + x + "')";
+    let imageFile = images[0];
+
+    var reader = new FileReader();
+
+    reader.onload = (e) => {
+        var img = document.createElement("img");
+        
+        img.onload = (e) => {
+            var canvas = document.createElement("canvas");
+        
+            var height = img.height;
+            var width = img.width;
+    
+            var max_width = 420
+            var max_height = 300
+
+            if (width > height) {
+                if (width > max_width) {
+                    height = height * (max_width / width);
+                    width = max_width;
+                }
+            } else {
+                if (height > max_height) {
+                    width = width * (max_height / height);
+                    height = max_height;
+                }
+            }
+
+            canvas.width = width;
+            canvas.height = height;
+
+            var ctx = canvas.getContext("2d");
+
+            ctx.drawImage(img, 0, 0, width, height);
+
+            var dataurl = canvas.toDataURL(imageFile.type);
+            element.style.backgroundImage = "url('" + dataurl + "')";
         }
-    );
+        img.src = e.target.result;
+    }
+
+    reader.readAsDataURL(imageFile)
 }
 
 function setImages(url, element) {
