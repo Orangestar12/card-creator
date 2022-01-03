@@ -191,7 +191,7 @@ function preventDefaults (e) {
     });
 });
 
-for (let img of document.querySelector('.icon_gallery').querySelectorAll('img')) {
+for (let img of document.querySelector('.icon-gallery').querySelectorAll('img')) {
     img.addEventListener('click', () => {
         setImages(img.src, typeDrop);
         if (img.alt) {
