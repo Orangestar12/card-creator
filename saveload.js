@@ -155,7 +155,10 @@ function loadFile(e) {
             setRGB();
             reAlignImage();
 
+            e.target.value = null;
+
         });
+        
         try {
             reader.readAsText(e.target.files[0]);
         } catch(e) {
