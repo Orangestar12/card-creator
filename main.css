@@ -4,23 +4,41 @@
 }
 
 html {
-    margin: 8px;
-    background: #191918;
+    background: #191919;
     color: white;
 }
 
 body {
-    max-width: 640px;
-    margin: auto;
     font: 14pt sans-serif;
 }
 .container { margin: 1em 0; }
 .centered { text-align: center; }
 .hidden { display: none; }
 
+.scroll {
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    column-gap: 32px;
+}
+
+/* .flex.break > div {
+} */
+
+.column {
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
 #card-container {
     /* position: absolute; */
-    margin: auto;
+    /* margin: auto; */
     width: 5in;
     height: 7in;
     background: rgb(146, 117, 42);
@@ -140,12 +158,6 @@ body {
     border-color: rgba(20,20,20,0.6);
 }
 
-.flex {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-}
-
 #form-container > div {
     margin: 3px;
     padding: 3px;
@@ -227,21 +239,24 @@ select#rarity:focus {
 	z-index: -1;
 }
 
-.icon_gallery {
+.icon-gallery {
+    max-height: 7in;
     background: #333;
-    height: 200px;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
+    overflow: hidden;
     color: white;
     font-weight: bold;
 }
 
-.icon_gallery > p {
-    /* width: 100%; */
-    display: inline-block;
+.icon-gallery p {
+    width: 100%;
+    text-align: left;
+    margin: 0.5em 1ch;
 }
 
-.icon_gallery img {
-    max-height: 64px;
+.icon-gallery img {
+    max-height: 1em;
+    margin-right: 1ch;
     cursor: pointer;
 }
 

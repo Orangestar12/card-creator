@@ -357,9 +357,9 @@ inputs.satNumerical.addEventListener('change', () => {
     setRGB();
 });
 
-document.querySelector('#typeButton').addEventListener('click', () => {
-    document.querySelector('#typeContainer').classList.toggle('hidden');
-})
+// document.querySelector('#typeButton').addEventListener('click', () => {
+//     document.querySelector('#typeContainer').classList.toggle('hidden');
+// })
 
 document.querySelector('#render').addEventListener('click', () => {
     card.background.style.margin = '0';
