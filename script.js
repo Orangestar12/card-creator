@@ -368,6 +368,7 @@ document.querySelector('#render').addEventListener('click', () => {
         'content',
         'initial-scale=1, minimum-scale=1, maximum-scale=1'
     );
+    card.background.parentElement.style.display = 'block';
     html2canvas(card.background, {
         // allowTaint: true,
         width: 480,
@@ -386,6 +387,7 @@ document.querySelector('#render').addEventListener('click', () => {
         'content',
         'initial-scale=0.6, minimum-scale=0.6, maximum-scale=0.6'
     );
+    card.background.parentElement.style.display = 'flex';
 })
 
 inputs.font.addEventListener('change', () => {
