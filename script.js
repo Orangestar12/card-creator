@@ -209,8 +209,8 @@ function resizeImageFromUrl(url, callback) {
         var height = img.height;
         var width = img.width;
 
-        var max_width = 420
-        var max_height = 300
+        var max_width = 640;
+        var max_height = 640;
 
         if (width > height) {
             if (width > max_width) {
