@@ -141,11 +141,7 @@ inputs.font.addEventListener('change', () => {
 });
 
 function updateStyle() {
-    card.description.children[0].textContent = '.description div{margin-top:' +
-                                                inputs.divMargins.value +
-                                                'px;min-height:' +
-                                                (inputs.divMinHeight.value / 100) +
-                                                'em;}'
+    document.querySelector('#desc').textContent = '.description div{margin-top:' + inputs.divMargins.value + 'px;min-height:' + (inputs.divMinHeight.value / 100) + 'em;}'
 }
 
 [inputs.divMargins, inputs.divMinHeight].forEach(e => {
