@@ -1,0 +1,612 @@
+* {
+    position: relative;
+    box-sizing: border-box;
+}
+
+/* general page styles */
+html {
+    background: #191919;
+    color: white;
+}
+
+body {
+    font-size: 14pt;
+    font-family: sans-serif;
+}
+
+.header {
+    margin: 1em 16px;
+}
+
+/* reusable styles */
+.centered { text-align: center; }
+.middle {
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    display: block;
+}
+.hidden { display: none !important; }
+
+.scroll {
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: stretch;
+}
+
+.column {
+    flex-direction: column;
+    justify-content: start;
+}
+
+.box{
+    display: block;
+    line-height: 1.15;
+    /* border: 1px solid rgba(0,0,0,0.6); */
+    background: rgba(0,0,0,0.75);
+    box-shadow: 0 0 5px rgba(0,0,0,0.75);
+    margin: auto;
+    padding: 8px;
+    border-radius:4px;
+    overflow: hidden;
+    margin: 5px 15px;
+}
+#card-container.light .box {
+    background: rgba(250,250,250,0.75);
+    box-shadow: 0 0 5px rgba(250,250,250,0.75);
+    /* border-color: rgba(250,250,250,0.6); */
+}
+
+.shadowed {
+    text-shadow: 1px 1px 0 black, 2px 2px 0 black;
+}
+#card-container.light .shadowed {
+    text-shadow: 1px 1px 0 white, 2px 2px 0 white;
+}
+
+button, .button {
+    display:inline-block;
+    background: #554;
+    padding: 1px 6px;
+    color: white;
+    border-radius: 4px;
+    border: 2px solid #443;
+    cursor: pointer;
+}
+
+.flavor {
+    font-style: italic;
+    font-size: 0.75em;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+p {
+    margin:0.25em;
+}
+
+.small {
+    font-size: 0.75em;
+}
+
+/* card styles start here */
+#card-container {
+    width: 5in;
+    height: 7in;
+
+    /* background: rgb(44, 38, 23); */
+    background-image: url('/card-creator/assets/Strand_paget.jpg');
+    background-position: center;
+    background-size: cover;
+
+    /* outline: 3px solid #573e20; */
+    border-radius: 10px;
+    box-shadow: 0 0 1px 3px rgb(60, 55, 51), 0 0 10px black;
+
+    overflow: hidden;
+    transform-origin: top left;
+
+    perspective:500px;
+    perspective-origin: 50% 200px;
+
+    color: white;
+    word-spacing: 0.075ch;
+    font-family: 'PT Sans Narrow', sans-serif;
+    
+    --main-color: #b98c19;
+}
+#card-container.light {
+    color: black;
+}
+
+.title {
+    height: 50px;
+    background-color: var(--main-color);
+    margin: 6px 0;
+    padding: 0 12px;
+    font-size: 28pt;
+    border-bottom: 4px solid;
+    border-color:rgba(105, 78, 11, 0.8);
+    z-index: 1000;
+    overflow: hidden;
+    font-family: 'Bebas Neue', sans-serif;
+}
+.title > div {
+    white-space: pre;
+    transform-origin: left;
+}
+
+.color {
+    position: absolute;
+    font-size: 0.895em;
+    right: 8px;
+    bottom: 620px;
+    z-index: 1000;
+    text-transform: uppercase;
+}
+#card-container.light .title {
+    color: black;
+}
+
+.image-container {
+    display: block;
+    background-color: black;
+    border: 2px groove rgba(255,255,255,0.6);
+    height: 2.6in;
+    width: 3.7in;
+    transform: rotateY(35deg);
+    /* float: left; */
+    position: absolute;
+    left: 0; top: 80px;
+}
+.image {
+    position:absolute;
+    top:0;bottom:0;left:0;right:0;
+    background-image: url('/card-creator/assets/Basil_Rathbone_Sherlock_Holmes.jpeg');
+    background-clip: padding-box;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+}
+
+#card-container.noPortrait .image-container {
+    display: none;
+}
+/* #card-container.light .image {
+    border: 2px solid rgba(20,20,20,0.4);
+} */
+
+.highlight {
+    outline: 8px dashed red;
+}
+
+.topBox {
+    /* position: absolute;
+    top: 62px; */
+    margin: 0 32px 0 16px;
+    justify-content: space-between;
+}
+#card-container.light .topBox {
+    color: black;
+    text-shadow: 0.5px 0.5px 0 white;
+}
+
+.fr {
+    border-radius: 4px;
+    padding: 2px 6px;
+    background: var(--main-color);
+    display: inline-block;
+}
+.typeContainer {
+    margin-top:-4px;
+}
+.type {
+    display: inline-block;
+
+    /* position: absolute;
+    right: 0;
+    top: -2px; */
+
+    position: static;
+    transform: translateY(6px);
+
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+
+    background-image: url('/card-creator/assets/dark/character.svg');
+    background-size: cover;
+    background-position: center;
+    background-color: #424242;
+
+    color: white;
+    border: 2px solid #333;
+
+    cursor: pointer;
+}
+.typeTitle {
+    display: inline-block;
+    /* text-transform: capitalize; */
+    color: white;
+} 
+.light .typeTitle {
+    color: black;
+    text-shadow: 1px 1px 1px white;
+}
+
+.tags {
+    text-align: center;
+    /* height: 165px; */
+    margin-left: 300px;
+}
+.t {
+    display: inline-block;
+    border-radius: 4px;
+    padding: 2px 6px;
+    margin: 0 3px 3px 0;
+    border: 1px solid var(--main-color);
+    box-shadow: 0 0 4px 1px var(--main-color) inset;
+}
+/* #card-container.noStats .tags {
+    height: 216.5px;
+} */
+#addTag {
+    position: absolute;
+    right: 42px;
+    z-index: 500;
+    opacity: 0.75;
+    font-size: 1.25em;
+}
+
+.stats {
+    font-size: 1.25em;
+    font-style: italic;
+    display: block;
+    margin-left: auto;
+    width: 165px;
+    height: 2em;
+}
+.stats > .a {
+    position: absolute;
+    left: 16px;
+}
+.stats > .d {
+    position: absolute;
+    right: 16px;
+    text-align:right;
+}
+#card-container.noStats .stats {
+    display: none;
+}
+.stats [contenteditable] {
+    min-width: 2ch;
+    display: inline-block;
+}
+
+#cheatsheet {
+    /* font-family: sans-serif;
+    font-size: 12pt; */
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    left: 8px;
+    height: 300px;
+    padding: 8px;
+    background-color:black;
+    /* background-image: url('/card-creator/assets/cheat.svg');
+    background-size: contain;
+    background-position: bottom;
+    background-repeat: no-repeat; */
+    z-index: 1500;
+    line-height: 1;
+    
+    font-family: sans-serif;
+    font-size: 12pt;
+}
+#cheatsheet p {
+    margin: 2px 0;
+}
+
+.bottom {
+    /* height: 14.5em; */
+    padding-bottom: 0;
+    position: absolute;
+    left: 8px;
+    right: 8px;
+    bottom: 1em;
+}
+.description {
+    white-space: pre-wrap;
+}
+.description div {
+    margin-top: 5px;
+    min-height: 0.25em;
+}
+.description > div:first-child{
+    margin-top: 0;
+}
+.description div.indented { margin-left: 16px; }
+
+.description:hover::after {
+    content: 'Click to edit description';
+    position: absolute;
+    display: block;
+    top:0;left:0;right:0;bottom:0;
+    background: rgba(0,0,0,0.75);
+    color: white;
+    text-align:center;
+    font-size: 3em;
+    padding: 1em 4ch;
+    cursor: pointer;
+}
+
+/* .description::after {
+    content: '\00D8';
+    display: inline-block;
+} */
+
+.char {
+    font-style: italic;
+    text-decoration: underline;
+    margin-right: 0.3ch;
+}
+
+#markup {
+    position: absolute;
+    left: 24px;
+    top: 320px;
+    width: 432px;
+    height: 266px;
+    z-index: 1000;
+}
+
+#tooltip {
+    text-align: center;
+    position: absolute;
+    background: white;
+    padding: 8px;
+    border-radius: 4px;
+    color: black;
+    pointer-events: none;
+}
+
+.quote {
+    font-size: 0.85em;
+    font-style: italic;
+    /* height: 3.5em; */
+}
+.quote::before { content: '\275D'; margin-right: 0.1ch; }
+.quote::after { content: '\275E'; }
+
+select, option {
+    background: black;
+    color: white;
+    border: 1px solid #222;
+}
+
+.date {
+    position: absolute;
+    left: 0.25in;
+    bottom: 3.5px;
+    font-size: 10pt;
+    text-align: right;
+}
+
+.limit {
+    position:absolute;
+    left: 50%; bottom: 3.5px;
+    /* transform: translateX(-50%); */
+    font-size: 10pt;
+}
+.limit::before {
+    content:'';
+    display: block;
+    position: absolute;
+    left: -22px;
+    top: -2px;
+    
+    background-image: url('/card-creator/assets/dark/fold.svg');
+    background-size: cover;
+
+    width: 18px;
+    height: 18px;
+}
+.light .limit::before {
+    background-image: url('/card-creator/assets/light/fold.svg')
+}
+
+select#rarity {
+    appearance: none;
+    background: transparent;
+    border: none;
+
+    color: white;
+    text-shadow: 0 0 2px black;
+    
+    position: absolute;
+    right: 0.25in;
+    bottom: 3.5px;
+    font-size: 10pt;
+    text-align: right;
+    
+    min-width: 6ch;
+}
+select#rarity option {
+    font-size: 14pt;
+}
+#card-container.light select#rarity {
+    color: black;
+    text-shadow: 0 0 2px white;
+}
+select#rarity:focus {
+    outline: none;
+}
+
+/* settings form */
+#form-container > div {
+    background: #3F3F33;
+    width: 300px;
+    padding: 8px;
+}
+
+#form-container div {
+    margin: 8px 0;
+}
+
+.imageButtons label{
+    width: 125px;
+    height: 125px;
+    display: block;
+    word-wrap: break-word;
+    background: #222;
+}
+
+input[type="number"], input[type="color"]{
+    appearance: none;
+    background: black;
+    color: white;
+    border: 1px solid #111;
+    border-radius: 2px;
+    margin: 2px 2px;
+}
+
+input.darkMode[type="checkbox"] {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: black;
+}
+
+input.darkMode:checked {
+    background: white;
+}
+
+input[type='number'] {
+    width: 6ch;
+    padding:0;
+}
+
+.XY {
+    display: inline-block;
+    width: 75px;
+    height: 75px;
+    background: black;
+    outline: 2px groove;
+    touch-action: pinch-zoom; /* This is how we're supposed to do this? fuck */
+}
+
+.dot {
+    background: cyan;
+    box-shadow: 0 0 2px black;
+    border-radius:50%;
+    height:5px;width:5px;
+}
+
+/* misc */
+
+.no > input {
+    width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: fixed;
+	z-index: -1;
+}
+
+.icon-gallery {
+    max-height: 7in;
+    background: #333;
+    /* overflow-y: scroll; */
+    overflow: hidden;
+    color: white;
+    font-weight: bold;
+}
+
+.icon-gallery p {
+    width: 100%;
+    text-align: left;
+    margin: 0.5em 1ch;
+}
+
+.icon-gallery img {
+    max-height: 1em;
+    margin-right: 1ch;
+    cursor: pointer;
+}
+
+button.big, .button.big {
+    font-size: 20pt;
+    height: auto;
+}
+
+h3 {
+    margin: 6px;
+    cursor: pointer;
+}
+
+body.rendering {
+    overflow-y: hidden !important;
+}
+body.rendering #card-container{
+    margin: 0 !important;
+    border-radius: 0 !important;
+}
+body.rendering #addTag {
+    display: none !important;
+}
+
+.DOES-THIS-COUNT-AS-A-HACK {
+    position: absolute;
+    background: rgba(230, 15, 194, 0.75);
+}
+
+@keyframes slidein {
+    0% {
+        transform: translateY(200%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+.toast {
+    opacity: 1;
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    background: white;
+    color: black;
+    padding: 16px;
+    transition: opacity 500ms;
+
+    animation: 500ms cubic-bezier(0, 0.5, 0.5, 1) slidein;
+}
+
+.modal {
+    position: absolute;
+    display: block;
+    padding: 2em;
+    background: black;
+    box-shadow: 2px 2px 0px black;
+    top:50%;
+    left: 50%;
+    max-width: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 99999999999999999999999999999999999999999; /* yeah */
+    font-size: 18pt;
+}
+.modal button {
+    font-size: 1.2em;
+    margin: 0.5em 0 0 0;
+    background: #2a5e8c;
+    border: none;
+    padding: 0.15em 0.75ch;
+}
