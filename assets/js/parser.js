@@ -15,7 +15,8 @@ const replacements = {
     '[INSTANT]' : 'instant',
     '[REACT]' : 'react',
     '[LOCATION]' : 'location',
-    '[SEARCH]' : 'search'
+    '[SEARCH]' : 'search',
+    '[COMMANDER]' : 'search'
 }
 
 const textBox = document.querySelector('#markup');
