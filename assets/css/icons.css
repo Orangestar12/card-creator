@@ -56,3 +56,6 @@
 
 .token { background-image: url('/card-creator/assets/dark/token.svg'); }
 .light .token { background-image: url('/card-creator/assets/light/token.svg'); }
+
+.search { background-image: url('/card-creator/assets/dark/search.svg'); }
+.light .search { background-image: url('/card-creator/assets/light/search.svg'); }
