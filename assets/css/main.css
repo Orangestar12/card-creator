@@ -498,11 +498,12 @@ input[type='number'] {
 }
 
 .XY {
-    display: inline-block;
+    display: block;
     width: 75px;
     height: 75px;
     background: black;
     outline: 2px groove;
+    margin: 8px auto !important;
     touch-action: pinch-zoom; /* This is how we're supposed to do this? fuck */
 }
 
@@ -612,4 +613,15 @@ body.rendering #addTag {
     background: #2a5e8c;
     border: none;
     padding: 0.15em 0.75ch;
+}
+
+#changelog {
+    max-width: 480px;
+    margin: 2em auto;
+    padding: 1em 4ch;
+}
+
+#changelog h3 {
+    text-align: center;
+    cursor: unset;
 }

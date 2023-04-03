@@ -143,11 +143,13 @@
                 <div class="flex hidden">
                     <div class="portrait-alignment-box">
                         <h3>Portrait</h3>
-                        <div  class="XY" id="portraitXY"><span class="dot middle"></span></div>
+                        <div class="XY" id="portraitXY"><span class="dot middle"></span></div>
+                        <button class="reset">Center</button>
                     </div>
                     <div>
                         <h3>BG</h3>
                         <div class="XY" id="bgXY"><span class="dot middle"></span></div>
+                        <button class="reset">Center</button>
                     </div>
                 </div>
             </div>
@@ -238,12 +240,27 @@
         <input type="file" name="loadUpload" id="loadUpload" accept=".card,application/json" />
     </div>
 
-    <script src="./assets/js/html-to-image.js"></script>
+    <div id="changelog">
+        <h3>Changelog</h3>
+        <time datetime="2023-04-03">2023-04-03</time>
+        <ul>
+            <li>Added changelog.</li>
+            <li>Added a button to reset the alignment of images.</li>
+            <li>Cards no longer save the portrait image if the portrait image is disabled. (This makes .card files smaller.)</li>
+        </ul>
+        <time datetime="2023-04-02">2023-04-02</time>
+        <ul>
+            <li>Added deferred asynchronous save/load system. This should theoretically make the CPU usage lighter and less likely to bottleneck on low power machines.</li>
+            <li>Added an icon for the "Commander" card type.</li>
+            <li>Added an icon for "Search your deck" card effects.</li>
+        </ul>
+    </div>
     <script src="./assets/js/helperfuncs.js"></script>
-    <script src="./assets/js/upload.js"></script>
-    <script src="./assets/js/parser.js"></script>
-    <script src="./assets/js/other.js"></script>
-    <script src="./assets/js/saveload.js"></script>
-    <script src="./assets/js/render.js"></script>
+    <script async src="./assets/js/html-to-image.js"></script>
+    <script async src="./assets/js/upload.js"></script>
+    <script async src="./assets/js/parser.js"></script>
+    <script async src="./assets/js/other.js"></script>
+    <script async src="./assets/js/saveload.js"></script>
+    <script async src="./assets/js/render.js"></script>
 </body>
 </html>

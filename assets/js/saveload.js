@@ -1,5 +1,4 @@
 'use strict';
-const d = true;
 
 let rarities = [];
 let raritiesElms = document.querySelector('#rarity').options;
@@ -7,12 +6,6 @@ for (let i=0; i < raritiesElms.length; i++) {
     rarities.push(raritiesElms[i].value);
 };
 raritiesElms = undefined;
-
-function debug(){
-    if (d) {
-        console.log(arguments);
-    }
-}
 
 // https://stackoverflow.com/a/18197341
 function download(filename, text, image) {
@@ -156,7 +149,6 @@ function convertHTTPUri(e) {
 }
 
 function modal(text, options, callbacks) {
-    // debug('making modal');
     let m = document.createElement('div');
     m.classList.add('modal');
     m.appendChild(document.createElement('p'))
@@ -166,7 +158,6 @@ function modal(text, options, callbacks) {
     m.lastChild.classList.add('flex');
 
     for (let option in options) {
-        // debug('adding option for', options[option])
         m.lastChild.appendChild(document.createElement('button'));
         m.lastChild.lastChild.textContent = options[option];
         m.lastChild.lastChild.addEventListener('click', () => {
@@ -176,7 +167,6 @@ function modal(text, options, callbacks) {
     }
 
     document.body.appendChild(m);
-    // debug(m);
 }
 
 function backwardsCompUriCheck(uri) {
@@ -279,7 +269,6 @@ async function parseCard(result) {
                         backgroundY: savedCard.alignment
                     }
                     if (['INSTANT', 'REACTION', 'LOCATION', 'ITEM', 'EQUIP'].indexOf(savedCard.type) == -1) {
-                        debug('Attempting to parse desc-based atk and def...');
                         let firstnl = savedCard.description.indexOf('\n');
                         let line = savedCard.description.slice(0,firstnl);
                         let atk = line.slice(5);
@@ -296,9 +285,7 @@ async function parseCard(result) {
                         savedCard.def = def;
             
                         inputs.stats.checked = true;
-                        debug(atk, def, savedCard.description);
                     } else {
-                        debug('This is an effect card.');
                         savedCard.atk = 0;
                         savedCard.def = 0;
                         inputs.stats.checked = false;

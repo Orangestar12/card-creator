@@ -249,21 +249,14 @@ function setDate() {
 
 setDate();
 
-// image position
-function setPos(e) {
-    if (!posing) { return; }
-
-    let r = this.getBoundingClientRect();
-    let x = e.clientX - r.left;
-    let y = e.clientY - r.top;
-
+function _setPos(x, y, e) {
     // clamp
     x = Math.max(x, 0);
     x = Math.min(x, 75);
     y = Math.max(y, 0);
     y = Math.min(y, 75);
 
-    let dot = this.children[0];
+    let dot = e.children[0];
     
     dot.style.left = x + 'px';
     dot.style.top = y + 'px';
@@ -271,25 +264,44 @@ function setPos(e) {
     let bx = (x / 75) * 100;
     let by = (y / 75) * 100;
 
-    if (this.id == 'bgXY') {
+    if (e.id == 'bgXY') {
         card.container.style.backgroundPosition = bx + '% ' + by + '%';
     } else {
         card.portrait.style.backgroundPosition = bx + '% ' + by + '%';
     }
+}
 
+// image position
+function setPos(e) {
+    if (!posing) { return; }
+    
+    let r = this.getBoundingClientRect();
+
+    _setPos(
+        e.clientX - r.left,
+        e.clientY - r.top,
+        this
+    )
+    
     preventDefaults(e);
+}
+
+for (let element of document.querySelectorAll('button.reset')) {
+    element.addEventListener('click', function() {
+        if (this.parentElement.classList.contains('portrait-alignment-box')) {
+            _setPos(37, 37, document.querySelector('#portraitXY'));
+        } else {
+            _setPos(37, 37, document.querySelector('#bgXY'));
+        }
+    });
 }
 
 let posing = false;
 
 for (let element of document.querySelectorAll('.XY')) {
-
-    element.addEventListener('pointerdown', (e) => {
-        posing = true;
-        preventDefaults(e);
-    });
-
-    element.addEventListener('pointermove', setPos);
+    element.addEventListener('pointerdown', () => { posing = true });
+    
+    ['pointerdown', 'pointermove'].forEach(x => {element.addEventListener(x, setPos);})
 }
 
 document.body.addEventListener('pointerup', (e) => {
