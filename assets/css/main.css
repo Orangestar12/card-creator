@@ -180,6 +180,9 @@ p {
 #card-container.noPortrait .image-container {
     display: none;
 }
+#card-container.noPortrait .portrait-alignment-box {
+    display: none;
+}
 /* #card-container.light .image {
     border: 2px solid rgba(20,20,20,0.4);
 } */

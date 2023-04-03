@@ -116,8 +116,14 @@
                 <div class="hidden imageButtons">
                     <p>Click the button or drag an image onto it.</p>
                     <div class="flex">
-                        <label class="button" for="portraitUpload" id="portraitInForm"><span class="middle">Portrait</span></label>
-                        <label class="button" for="bgUpload" id="bgInForm"><span class="middle">Background</span></label>
+                        <div>
+                            <label class="button" for="portraitUpload" id="portraitInForm"><span class="middle">Portrait</span></label>
+                            <button>Download</button>
+                        </div>
+                        <div>
+                            <label class="button" for="bgUpload" id="bgInForm"><span class="middle">Background</span></label>
+                            <button>Download</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -135,7 +141,7 @@
             <div>
                 <h3>Align Images</h3>
                 <div class="flex hidden">
-                    <div>
+                    <div class="portrait-alignment-box">
                         <h3>Portrait</h3>
                         <div  class="XY" id="portraitXY"><span class="dot middle"></span></div>
                     </div>

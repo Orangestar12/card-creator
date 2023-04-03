@@ -179,3 +179,18 @@ for(let img in images) {
         }
     });
 }
+
+for (let e of document.querySelectorAll('.imageButtons button')) {
+    e.addEventListener('click', function() {
+        let t = card.title.firstElementChild.textContent;
+        let img = '';
+        if (this.parentElement.firstElementChild.id == 'portraitInForm') {
+            img = getComputedStyle(images.portrait.element).backgroundImage;
+            t += ' - Portrait';
+        } else {
+            img = getComputedStyle(images.bg.element).backgroundImage;
+            t += ' - Background';
+        }
+        download(t + img.slice(img.lastIndexOf('.'), -2), img.slice(5,-2), true);
+    })
+}
