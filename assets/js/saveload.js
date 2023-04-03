@@ -123,9 +123,11 @@ async function saveFile() {
             () => {
                 savedCard.images = {
                     type: card.type.style.backgroundImage,
-                    portrait: card.portrait.style.backgroundImage,
                     bg: card.container.style.backgroundImage
                 };
+                if (!savedCard.noPortrait) {
+                    savedCard.images.portrait = card.portrait.style.backgroundImage;
+                }
             },
             'Saving images...'
         ],
@@ -313,7 +315,9 @@ async function parseCard(result) {
             () => {
                 if (savedCard.version >= 300) {
                     // pics
-                    card.portrait.style.backgroundImage = savedCard.images.portrait;
+                    if (!savedCard.noPortrait) {
+                        card.portrait.style.backgroundImage = savedCard.images.portrait;
+                    }
                     card.type.style.backgroundImage = savedCard.images.type;
                     card.container.style.backgroundImage = savedCard.images.bg;
                 }
