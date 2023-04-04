@@ -258,7 +258,7 @@ async function parseCard(result) {
                                     () => {
                                         card.container.style.backgroundImage = 'url("' + y + '")';
                                         inputs.portrait.checked = false;
-                                        document.body.classList.add('noPortrait')
+                                        document.body.classList.add('noPortrait');
                                     }
                                 ]
                             );  
@@ -304,7 +304,7 @@ async function parseCard(result) {
             () => {
                 if (savedCard.version >= 300) {
                     // pics
-                    if (!savedCard.noPortrait) {
+                    if (savedCard.noPortrait) {
                         card.portrait.style.backgroundImage = savedCard.images.portrait;
                     }
                     card.type.style.backgroundImage = savedCard.images.type;
