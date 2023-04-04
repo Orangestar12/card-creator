@@ -62,3 +62,9 @@
 
 .commander { background-image: url('/card-creator/assets/dark/commander.svg'); }
 .light .commander { background-image: url('/card-creator/assets/light/commander.svg'); }
+
+.energy { background-image: url('/card-creator/assets/dark/energy.svg'); }
+.light .energy { background-image: url('/card-creator/assets/light/energy.svg'); }
+
+.engine { background-image: url('/card-creator/assets/dark/engine.svg'); }
+.light .engine { background-image: url('/card-creator/assets/light/engine.svg'); }

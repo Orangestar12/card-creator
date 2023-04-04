@@ -1,10 +1,3 @@
-<!-- 
-    checklist:
-    - redesign png icons to svg for dark mode + avoid copyright
-    - saving and loading
-    - old card import system
- -->
-
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
@@ -58,13 +51,14 @@
                         <p><span class="icon target"></span> [TARGET]<span class="small"> Card must target</span></p>
                         <p><span class="icon search"></span> [SEARCH]<span class="small"> Search for card</span></p>
                         <p><span class="icon commander"></span> [COMMANDER]<span class="small"> Effects in commander slot</span></p>
+                        <p><span class="icon energy"></span> [ENERGY]<span class="small"> Energy</span></p>
                         <p><span class="icon addon"></span> [+]<span class="small"> Additional effect<span class="small"> (Will indent)</span></span></p>
                         <p><span class="icon atk"></span> [ATK] <span class="icon def"></span> [DEF]</p>
                         <p class="small" style="margin-left:6ch"> Do +[ATK]#</p>
                         <p><span class="icon turn"></span> [TURN] <span class="icon token"></span> [TOKEN]</p>
                         <p><span class="icon faction"></span> [FACTION]</p>
                         <p><span class="icon item"></span> [ITEM] <span class="icon equip"></span> [EQUIP]</p>
-                        <p><span class="icon character"></span> [CHARACTER]</p>
+                        <p><span class="icon character"></span> [CHARACTER]</p><p><span class="icon engine"></span> [ENGINE]</p>
                         <p><span class="icon instant"></span> [INSTANT] <span class="icon react"></span> [REACT]</p>
                         <p><span class="icon location"></span> [LOCATION]</p>
                     </div>
@@ -136,6 +130,7 @@
                     <p><img src="/card-creator/assets/dark/react.svg" alt="Reaction"/>Reactions</p>
                     <p><img src="/card-creator/assets/dark/equip.svg" alt="Equip"/>Equipment</p>
                     <p><img src="/card-creator/assets/dark/location.svg" alt="Location"/>Locations</p>
+                    <p><img src="/card-creator/assets/dark/engine.svg" alt="Engine"/>Engines</p>
                 </div>
             </div>
             <div>
@@ -237,6 +232,7 @@
         <h3>Changelog</h3>
         <time datetime="2023-04-03">2023-04-03</time>
         <ul>
+            <li>Added new card icon <span class="icon energy"></span> and new card type <span class="icon engine"></span>.</li>
             <li>[BUG] The color detector will no longer override saved color values.</li>
             <li>[BUG] Vertical padding was not being restored correctly on card load.</li>
             <li>[BUG] Portraits were only being saved if portraits were *off*, not on. Whoops. Fixed.</li>
