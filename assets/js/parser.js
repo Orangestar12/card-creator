@@ -43,7 +43,7 @@ description.addEventListener('click', showBoxes);
 textBox.addEventListener('focusout', processMarkup);
 
 function processMarkup() {
-    let markup = textBox.value;
+    let markup = textBox.value.replace('<', '&lt;').replace('>', '&gt;');
 
     for (let statement in replacements) {
         markup = markup.replaceAll(statement, '<span class="icon ' + replacements[statement] + '"></span>');
