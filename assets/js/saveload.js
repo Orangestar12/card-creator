@@ -118,7 +118,7 @@ async function saveFile() {
                     type: card.type.style.backgroundImage,
                     bg: card.container.style.backgroundImage
                 };
-                if (!savedCard.noPortrait) {
+                if (savedCard.noPortrait) {
                     savedCard.images.portrait = card.portrait.style.backgroundImage;
                 }
             },
