@@ -60,13 +60,14 @@ function setRGB() {
     }
 
     // console.log(hsl)
-
-    if (hsl.l >= 80) {
-        c.textContent = 'WHITE';
-    } else if (hsl.l <= 30) {
-        c.textContent = 'BLACK';
-    } else if (hsl.s <= 10) {
-        c.textContent = 'GRAY';
+    if (hsl.s <= 5 || hsl.l <= 5 || hsl.l >= 95) {
+        if (hsl.l >= 80) {
+            c.textContent = 'WHITE';
+        } else if (hsl.l <= 10) {
+            c.textContent = 'BLACK';
+        } else {
+            c.textContent = 'GRAY';
+        }
     }
 
     if (c.textContent == 'ORANGE' && hsl.l <= 30) {
