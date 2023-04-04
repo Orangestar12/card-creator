@@ -23,7 +23,8 @@ const colorChanger = document.querySelector('input[type=\'color\']'),
         'portrait' : document.querySelector('input#noPortrait'),
         'vpad' : document.querySelector('#vpad'),
         'hpad' : document.querySelector('#hpad'),
-        'portraitHeight': document.querySelector('#portraitHeight')
+        'portraitHeight': document.querySelector('#portraitHeight'),
+        'tagFont' : document.querySelector('#tagFont')
     };
 
 function setRGB() {
@@ -140,6 +141,10 @@ inputs.portrait.addEventListener('change', () => {
 inputs.font.addEventListener('change', () => {
     card.description.style.fontSize = inputs.font.value + 'pt';
 });
+inputs.tagFont.addEventListener('change', () => {
+    card.tags.style.fontSize = inputs.tagFont.value + 'pt';
+});
+
 
 function updateStyle() {
     document.querySelector('#desc').textContent = '.description div{margin-top:' + inputs.divMargins.value + 'px;min-height:' + (inputs.divMinHeight.value / 100) + 'em;}'
@@ -155,6 +160,7 @@ setRGB();
 
 document.querySelector('#defaults').addEventListener('click', () => {
     inputs.font.value = 14;
+    inputs.tagFont.value = 14;
     inputs.squish.value = 100;
     inputs.divMargins.value = 5;
     inputs.divMinHeight.value = 25;
@@ -166,6 +172,7 @@ document.querySelector('#defaults').addEventListener('click', () => {
     inputs.stats.checked = true;
 
     card.description.style.fontSize = inputs.font.value + 'pt';
+    card.tags.style.fontSize = inputs.tagFont.value + 'pt';
     card.title.children[0].style.transform = "scaleX(" + inputs.squish.value/100 + ")";
     card.portrait.parentElement.style.height = '2.6in';
     card.container.classList.remove('light');

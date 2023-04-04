@@ -84,6 +84,7 @@ async function saveFile() {
                     bgY: bgxy.firstChild.style.top ? parseInt(bgxy.firstChild.style.top) : 50,
                 }
                 savedCard.font = inputs.font.value;
+                savedCard.tagFont = inputs.tagFont.value;
                 savedCard.squish = inputs.squish.value;
                 savedCard.divMinHeight = inputs.divMinHeight.value;
                 savedCard.divMargins = inputs.divMargins.value;
@@ -339,7 +340,9 @@ async function parseCard(result) {
 
                 // font size
                 inputs.font.value = savedCard.font ? savedCard.font : '14';
+                inputs.tagFont.value = savedCard.tagFont ? savedCard.tagFont : '14';
                 card.description.style.fontSize = inputs.font.value + 'pt';
+                card.tags.style.fontSize = inputs.tagFont.value + 'pt';
             },
                 'Setting appearance...'
         ],

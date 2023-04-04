@@ -625,3 +625,7 @@ body.rendering #addTag {
     text-align: center;
     cursor: unset;
 }
+
+.tags {
+    font-size: 12pt;
+}
