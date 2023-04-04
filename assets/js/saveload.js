@@ -1,5 +1,8 @@
 'use strict';
 
+const portraitxy = document.querySelector('#portraitXY');
+const bgxy = document.querySelector('#bgXY');
+
 let rarities = [];
 let raritiesElms = document.querySelector('#rarity').options;
 for (let i=0; i < raritiesElms.length; i++) {
@@ -51,8 +54,6 @@ async function deferredJobSystem(actions) {
 }
 
 async function saveFile() {
-    let portraitxy = document.querySelector('#portraitXY');
-    let bgxy = document.querySelector('#bgXY');
     let savedCard = {};
     let saveString = '';
 
@@ -78,10 +79,10 @@ async function saveFile() {
             () => {
                 savedCard.color = colorChanger.value;
                 savedCard.pos = {
-                    portraitX: portraitxy.firstChild.style.left ? parseInt(portraitxy.firstChild.style.left) : 50,
-                    portraitY: portraitxy.firstChild.style.top ? parseInt(portraitxy.firstChild.style.top) : 50,
-                    bgX: bgxy.firstChild.style.left ? parseInt(bgxy.firstChild.style.left) : 50,
-                    bgY: bgxy.firstChild.style.top ? parseInt(bgxy.firstChild.style.top) : 50,
+                    portraitX: portraitxy.firstChild.style.left ? ((parseInt(portraitxy.firstChild.style.left) / 75) * 100) : 50,
+                    portraitY: portraitxy.firstChild.style.top ? ((parseInt(portraitxy.firstChild.style.top) / 75) * 100) : 50,
+                    bgX: bgxy.firstChild.style.left ? ((parseInt(bgxy.firstChild.style.left) / 75) * 100) : 50,
+                    bgY: bgxy.firstChild.style.top ? ((parseInt(bgxy.firstChild.style.top) / 75) * 100) : 50,
                 }
                 savedCard.font = inputs.font.value;
                 savedCard.tagFont = inputs.tagFont.value;
@@ -435,8 +436,13 @@ async function parseCard(result) {
                 for (let element of document.querySelectorAll('.XY')) {
                     element.removeAttribute('style');
                 }
-                card.portrait.style.backgroundPosition = ((savedCard.pos.portraitX / 75) * 100) + '% ' + ((savedCard.pos.portraitY / 75) * 100) + '%';
-                card.container.style.backgroundPosition = ((savedCard.pos.bgX / 75) * 100) + '% ' + ((savedCard.pos.bgY / 75) * 100) + '%';;
+                card.portrait.style.backgroundPosition = savedCard.pos.portraitX + '% ' + savedCard.pos.portraitY + '%';
+                card.container.style.backgroundPosition = savedCard.pos.bgX + '% ' + savedCard.pos.bgY + '%';
+                
+                portraitxy.firstChild.style.left = ((savedCard.pos.portraitX / 100) * 75) + 'px';
+                portraitxy.firstChild.style.top = ((savedCard.pos.portraitY / 100) * 75) + 'px';
+                bgxy.firstChild.style.left = ((savedCard.pos.bgX / 100) * 75) + 'px';
+                bgxy.firstChild.style.top = ((savedCard.pos.bgY / 100) * 75) + 'px';
 
                 processMarkup();
 
