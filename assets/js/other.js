@@ -19,8 +19,8 @@ const colorChanger = document.querySelector('input[type=\'color\']'),
         'divMinHeight': document.querySelector('#divMinHeight'),
         'divMargins': document.querySelector('#divMargins'),
         'darkMode' : document.querySelector('input.darkMode'),
-        'stats' : document.querySelector('input.noStats'),
-        'portrait' : document.querySelector('input.noPortrait'),
+        'stats' : document.querySelector('input#noStats'),
+        'portrait' : document.querySelector('input#noPortrait'),
         'vpad' : document.querySelector('#vpad'),
         'hpad' : document.querySelector('#hpad'),
         'portraitHeight': document.querySelector('#portraitHeight')
@@ -130,9 +130,9 @@ inputs.stats.addEventListener('change', () => {
 
 inputs.portrait.addEventListener('change', () => {
     if (inputs.portrait.checked) {
-        card.container.classList.remove('noPortrait');
+        document.body.classList.remove('noPortrait');
     } else {
-        card.container.classList.add('noPortrait');
+        document.body.classList.add('noPortrait');
     }
 })
 
@@ -169,7 +169,7 @@ document.querySelector('#defaults').addEventListener('click', () => {
     card.portrait.parentElement.style.height = '2.6in';
     card.container.classList.remove('light');
     card.container.classList.remove('noStats');
-    card.container.classList.remove('noPortrait');
+    document.body.classList.remove('noPortrait');
     updateStyle();
     setRGB();
     modifyMargins();

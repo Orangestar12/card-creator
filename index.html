@@ -162,11 +162,11 @@
                     </div>
                     <div>
                         <p>ATK/DEF</p>
-                        <input type="checkbox" class="noStats" checked="true"/>
+                        <input type="checkbox" id="noStats" checked="true"/>
                     </div>
                     <div>
                         <p>Portrait</p>
-                        <input type="checkbox" class="noPortrait" checked="true"/>
+                        <input type="checkbox" id="noPortrait" checked="true"/>
                     </div>
                 </div>
             </div>
@@ -244,6 +244,7 @@
         <h3>Changelog</h3>
         <time datetime="2023-04-03">2023-04-03</time>
         <ul>
+            <li>[Minor] [Bug] Portrait alignment doesn't show up anymore when portrait is disabled, as was intended.</li>
             <li>Added changelog.</li>
             <li>Added a button to reset the alignment of images.</li>
             <li>Cards no longer save the portrait image if the portrait image is disabled. (This makes .card files smaller.)</li>

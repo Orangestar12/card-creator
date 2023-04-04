@@ -177,10 +177,10 @@ p {
     cursor: pointer;
 }
 
-#card-container.noPortrait .image-container {
+body.noPortrait .image-container {
     display: none;
 }
-#card-container.noPortrait .portrait-alignment-box {
+body.noPortrait .portrait-alignment-box {
     display: none;
 }
 /* #card-container.light .image {

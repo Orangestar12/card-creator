@@ -233,7 +233,7 @@ async function parseCard(result) {
                                 () => {
                                     backwardsCompUriFix(savedCard.image, card.container);
                                     inputs.portrait.checked = false;
-                                    card.container.classList.add('noPortrait')
+                                    document.body.classList.add('noPortrait')
                                 }
                             ]
                         );
@@ -256,7 +256,7 @@ async function parseCard(result) {
                                     () => {
                                         card.container.style.backgroundImage = 'url("' + y + '")';
                                         inputs.portrait.checked = false;
-                                        card.container.classList.add('noPortrait')
+                                        document.body.classList.add('noPortrait')
                                     }
                                 ]
                             );  
@@ -437,10 +437,14 @@ async function parseCard(result) {
                 processMarkup();
 
                 if (!inputs.portrait.checked) {
-                    card.container.classList.add('noPortrait')
+                    document.body.classList.add('noPortrait');
+                } else {
+                    document.body.classList.remove('noPortrait');
                 }
                 if (!inputs.stats.checked) {
                     card.container.classList.add('noStats')
+                } else {
+                    card.container.classList.remove('noStats');
                 }
             },
             'Processing changes to card...'
