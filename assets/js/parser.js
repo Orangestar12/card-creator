@@ -18,7 +18,8 @@ const replacements = {
     '[SEARCH]' : 'search',
     '[COMMANDER]' : 'commander',
     '[ENERGY]' : 'energy',
-    '[ENGINE]' : 'engine'
+    '[ENGINE]' : 'engine',
+    '[DIE]' : 'die'
 }
 
 const textBox = document.querySelector('#markup');

@@ -68,3 +68,6 @@
 
 .engine { background-image: url('/card-creator/assets/dark/engine.svg'); }
 .light .engine { background-image: url('/card-creator/assets/light/engine.svg'); }
+
+.die { background-image: url('/card-creator/assets/dark/dice.svg'); }
+.light .die { background-image: url('/card-creator/assets/light/dice.svg'); }
