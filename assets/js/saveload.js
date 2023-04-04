@@ -345,12 +345,26 @@ async function parseCard(result) {
         ],
         [
             () => {
+                let color = hexToRGB(savedCard.color);
+                for(let i=0;i<3;i++) {
+                    document.querySelector('#rgb' + ['R','G','B'][i])
+                        .value = color[
+                            ['r','g','b'][i]
+                        ];
+                };
+                
+                setRGB();
+            },
+            'Importing color...'
+        ],
+        [
+            () => {
                 if (savedCard.version >= 300) {
                     // quote
                     card.quote.textContent = savedCard.quote;
 
                     // color (written)
-                    document.querySelector('.color').textContent = savedCard.colorText
+                    document.querySelector('.color').textContent = savedCard.colorText;
                     
                     // limit
                     document.querySelector('.limit').textContent = savedCard.limit;
@@ -409,23 +423,10 @@ async function parseCard(result) {
         ],
         [
             () => {
-                let color = hexToRGB(savedCard.color);
-                for(let i=0;i<3;i++) {
-                    document.querySelector('#rgb' + ['R','G','B'][i])
-                        .value = color[
-                            ['r','g','b'][i]
-                        ];
-                };
-            },
-            'Importing color...'
-        ],
-        [
-            () => {
                 card.portrait.parentElement.style.height = inputs.portraitHeight.value + 'in';
 
                 updateStyle();
                 toggleDarkness();
-                setRGB();
                 modifyMargins();
                 
                 for (let element of document.querySelectorAll('.XY')) {
