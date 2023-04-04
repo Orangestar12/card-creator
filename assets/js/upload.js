@@ -109,7 +109,6 @@ function resizeImageFromUrl(url, callback) {
 
 // get data URI from file
 function setImageFromFile(images, element) {
-    console.log('Setting image to', images);
     let imageFile = images[0];
 
     var reader = new FileReader();
@@ -174,7 +173,6 @@ for(let img in images) {
     // upload on input element change
     image.upload.addEventListener('change', function() {
         if (this.files) {
-            console.log('File found.')
             setImageFromFile(this.files, image.element);
         }
     });
