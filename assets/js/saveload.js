@@ -324,7 +324,7 @@ async function parseCard(result) {
                     inputs.divMargins.value = savedCard.divMargins;
                     inputs.divMinHeight.value = savedCard.divMinHeight;
                     inputs.hpad.value = savedCard.hpad;
-                    inputs.vpad.value = savedCard.dpad;
+                    inputs.vpad.value = savedCard.vpad;
 
                     // portrait height
                     inputs.portraitHeight.value = savedCard.portraitHeight;
