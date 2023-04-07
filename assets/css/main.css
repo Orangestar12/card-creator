@@ -302,8 +302,8 @@ body.noPortrait .portrait-alignment-box {
     right: 8px;
     left: 8px;
     height: 300px;
-    padding: 8px;
-    background-color:black;
+    padding: 4px;
+    background-color: white;
     /* background-image: url('/card-creator/assets/cheat.svg');
     background-size: contain;
     background-position: bottom;
