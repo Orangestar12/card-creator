@@ -418,7 +418,7 @@ select, option {
     width: 18px;
     height: 18px;
 }
-.light .limit::before {
+.light .limit .i {
     background-image: url('/card-creator/assets/light/fold.svg')
 }
 
