@@ -1,0 +1,73 @@
+.stats .icon {
+    height: 24px;
+    width: 24px;
+    margin: 0;
+    transform: translateY(0.15em);
+}
+
+.icon {
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    background-size: cover;
+    background-position: center;
+    margin: -0.15em 0.2ch 0;
+    transform: translateY(0.1em);
+}
+
+.atk { background-image: url('/card-creator/assets/dark/atk.svg'); }
+.light .atk { background-image: url('/card-creator/assets/light/atk.svg'); }
+
+.def { background-image: url('/card-creator/assets/dark/def.svg'); }
+.light .def { background-image: url('/card-creator/assets/light/def.svg'); }
+
+.item { background-image: url('/card-creator/assets/dark/item.svg'); }
+.light .item { background-image: url('/card-creator/assets/light/item.svg'); }
+
+.character { background-image: url('/card-creator/assets/dark/character.svg'); }
+.light .character { background-image: url('/card-creator/assets/dark/character.svg'); }
+
+.react { background-image: url('/card-creator/assets/dark/react.svg'); }
+.light .react { background-image: url('/card-creator/assets/light/react.svg'); }
+
+.instant { background-image: url('/card-creator/assets/dark/instant.svg'); }
+.light .instant { background-image: url('/card-creator/assets/light/instant.svg'); }
+
+.location { background-image: url('/card-creator/assets/dark/location.svg'); }
+.light .location { background-image: url('/card-creator/assets/light/location.svg'); }
+
+.equip { background-image: url('/card-creator/assets/dark/equip.svg'); }
+.light .equip { background-image: url('/card-creator/assets/light/equip.svg'); }
+
+.turn { background-image: url('/card-creator/assets/dark/turn.svg'); }
+.light .turn { background-image: url('/card-creator/assets/light/turn.svg'); }
+
+.target { background-image: url('/card-creator/assets/dark/target.svg'); }
+.light .target { background-image: url('/card-creator/assets/light/target.svg'); }
+
+.addon {
+    margin-left: 16px;
+    background-image: url('/card-creator/assets/dark/addon.svg');
+}
+.light .addon { background-image: url('/card-creator/assets/light/addon.svg'); }
+
+.faction { background-image: url('/card-creator/assets/dark/faction.svg'); }
+.light .faction { background-image: url('/card-creator/assets/light/faction.svg'); }
+
+.token { background-image: url('/card-creator/assets/dark/token.svg'); }
+.light .token { background-image: url('/card-creator/assets/light/token.svg'); }
+
+.search { background-image: url('/card-creator/assets/dark/search.svg'); }
+.light .search { background-image: url('/card-creator/assets/light/search.svg'); }
+
+.commander { background-image: url('/card-creator/assets/dark/commander.svg'); }
+.light .commander { background-image: url('/card-creator/assets/light/commander.svg'); }
+
+.energy { background-image: url('/card-creator/assets/dark/energy.svg'); }
+.light .energy { background-image: url('/card-creator/assets/light/energy.svg'); }
+
+.engine { background-image: url('/card-creator/assets/dark/engine.svg'); }
+.light .engine { background-image: url('/card-creator/assets/light/engine.svg'); }
+
+.die { background-image: url('/card-creator/assets/dark/dice.svg'); }
+.light .die { background-image: url('/card-creator/assets/light/dice.svg'); }

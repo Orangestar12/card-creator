@@ -1,0 +1,47 @@
+html {
+    background: black;
+    font: 12pt 'Open Sans', Arial, sans-serif;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    min-width: 1780px;
+}
+
+.playmat {
+    background: url('placemat.svg'), black;
+    width: 1280px;
+    height: 720px;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.card {
+    position: absolute;
+    left: 25px;
+    top: 25px;
+    width: 157px;
+    height: 220px;
+    background-size: contain;
+    touch-action: pinch-zoom;
+}
+
+.card.hidden::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-image: url('b1e075a483bb1dc5fa51f16d4d9ccead.jpg');
+    pointer-events: none;
+    background-size: 100% 100%;
+}
+
+#bigCard {
+    width: 500px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
