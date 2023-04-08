@@ -25,7 +25,7 @@
 .light .item { background-image: url('/card-creator/assets/light/item.svg'); }
 
 .character { background-image: url('/card-creator/assets/dark/character.svg'); }
-.light .character { background-image: url('/card-creator/assets/dark/character.svg'); }
+.light .character { background-image: url('/card-creator/assets/light/character.svg'); }
 
 .react { background-image: url('/card-creator/assets/dark/react.svg'); }
 .light .react { background-image: url('/card-creator/assets/light/react.svg'); }
