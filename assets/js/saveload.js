@@ -70,7 +70,7 @@ async function saveFile() {
                 savedCard.def = document.querySelector('.stats .d span[contenteditable]').textContent;
                 savedCard.quote = card.quote.textContent;
                 savedCard.rarity = card.rarity.value;
-                savedCard.limit = document.querySelector('.limit').textContent;
+                savedCard.limit = document.querySelector('.limit').children[1].textContent;
                 savedCard.date = document.querySelector('.date').datetime;
             },
             'Saving card text...'
@@ -371,7 +371,7 @@ async function parseCard(result) {
                     document.querySelector('.color').textContent = savedCard.colorText;
                     
                     // limit
-                    document.querySelector('.limit').textContent = savedCard.limit;
+                    document.querySelector('.limit').children[1].textContent = savedCard.limit;
                 }
                 // title
                 card.title.firstElementChild.textContent = savedCard.title;
