@@ -399,18 +399,19 @@ select, option {
 }
 
 .limit {
-    position:absolute;
-    left: 50%; bottom: 3.5px;
-    /* transform: translateX(-50%); */
-    font-size: 10pt;
-}
-.limit::before {
-    content:'';
-    display: block;
+    display: flex;
+    justify-content: center;
     position: absolute;
-    left: -22px;
-    top: -2px;
-    
+    left: 50%; bottom: 3.5px;
+    transform: translateX(-50%);
+    font-size: 10pt;
+    column-gap: 2px;
+}
+.limit div {
+    display: inline-block;
+    min-width: 1ch;
+}
+.limit .i {
     background-image: url('/card-creator/assets/dark/fold.svg');
     background-size: cover;
 

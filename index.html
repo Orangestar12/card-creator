@@ -92,8 +92,9 @@
  +[ATK]1 VS other [Criminal]s and [Mastermind]s.</textarea>
             <time class="date" datetime="2023-03-28"
               data-tooltip="Today's date. This is used to resolve card differences. You can't edit this: we update it automatically for you when you save new versions of cards." data-tooltip-pos="l" data-tooltip-x="6px" data-tooltip-y="530px" data-tooltip-w="260px">2023-03-28</time>
-            <div class="limit" contenteditable="true"
-              data-tooltip="The maximum number of this type of card allowed in a deck." data-tooltip-pos="l" data-tooltip-x="130px" data-tooltip-y="545px" data-tooltip-w="200px">3</div>
+            <div class="limit"
+              data-tooltip="The maximum number of this type of card allowed in a deck." data-tooltip-pos="l" data-tooltip-x="130px" data-tooltip-y="545px" data-tooltip-w="200px">
+              <div class="i"></div><div contenteditable="true">3</div></div>
             <select id="rarity" 
               data-tooltip="The rarity of this card." data-tooltip-pos="r" data-tooltip-x="6px" data-tooltip-y="600px">
                 <option value="-1"></option>
@@ -238,6 +239,7 @@
         <h3>Changelog</h3>
         <time datetime="2023-04-07">2023-04-07</time>
         <ul>
+            <li>Fixed card limit not being rendered right when exporting to PNG.</li>
             <li>Fixed missing [TURN] icon on light mode cards.</li>
             <li>Fixed the cheatsheet being unreadable.</li>
         </ul>
