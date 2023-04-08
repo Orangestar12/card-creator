@@ -295,8 +295,6 @@ body.noPortrait .portrait-alignment-box {
 }
 
 #cheatsheet {
-    /* font-family: sans-serif;
-    font-size: 12pt; */
     position: absolute;
     top: 8px;
     right: 8px;
@@ -304,10 +302,7 @@ body.noPortrait .portrait-alignment-box {
     height: 300px;
     padding: 4px;
     background-color: white;
-    /* background-image: url('/card-creator/assets/cheat.svg');
-    background-size: contain;
-    background-position: bottom;
-    background-repeat: no-repeat; */
+    color: black;
     z-index: 1500;
     line-height: 1;
     
