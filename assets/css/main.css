@@ -426,9 +426,6 @@ select#rarity {
     appearance: none;
     background: transparent;
     border: none;
-
-    color: white;
-    text-shadow: 0 0 2px black;
     
     position: absolute;
     right: 0.25in;
@@ -441,12 +438,18 @@ select#rarity {
 select#rarity option {
     font-size: 14pt;
 }
-#card-container.light select#rarity {
-    color: black;
-    text-shadow: 0 0 2px white;
-}
 select#rarity:focus {
     outline: none;
+}
+
+.date, .limit, select#rarity {
+    color: white;
+    filter: drop-shadow(0 0 1px black) drop-shadow(0 0 3px black);
+}
+
+.light .date, .light .limit, .light select#rarity {
+    color: black;
+    filter: drop-shadow(0 0 1px white) drop-shadow(0 0 3px white);
 }
 
 /* settings form */
