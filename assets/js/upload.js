@@ -5,7 +5,17 @@
 
 // https://stackoverflow.com/a/64929732/
 const getBase64FromUrl = async (url) => {
-    const data = await fetch(url);
+    const data = await fetch(url).catch((e) => {
+        if (e instanceof TypeError) {
+            if (url.startsWith('https')) {
+                toast('Couldn\'t download that file because the server didn\'t want us to. Upload it instead.');
+            } else if(url.indexOf('localhost') != -1 || url.startsWith('file://')) {
+                toast('Hey, that\'s a local file! Cut it out. Drag the file in like a normal person.');
+            }
+            console.log(url);
+        }
+        throw e;
+    });
     const blob = await data.blob();
     return new Promise((resolve) => {
         const reader = new FileReader();
