@@ -462,27 +462,66 @@ async function parseCard(result) {
     ]);
 }
 
-function loadFile(e) {
-    if (e.target.files) {
-        let reader = new FileReader();
+function loadFile(file) {
+    let reader = new FileReader();
 
-        reader.addEventListener('load', () => {
-            parseCard(reader.result);
-            e.target.value = null;
-        });
-        
-        try {
-            reader.readAsText(e.target.files[0]);
-        } catch(e) {
-            if (!(e instanceof TypeError)) {
-                toast(e);
-                // throw e;
-            }
-            // TypeError means the import file was cancelled.
+    reader.addEventListener('load', () => {
+        parseCard(reader.result);
+        document.querySelector('#loadUpload').value = null;
+    });
+    
+    try {
+        reader.readAsText(file);
+    } catch(err) {
+        if (!(err instanceof TypeError)) {
+            toast(err);
+            // throw e;
         }
+        // TypeError means the import file was cancelled.
     }
 }
 
-document.querySelector('#loadUpload').addEventListener('change', loadFile);
+document.querySelector('#loadUpload').addEventListener('change', function (e) {
+    if (e.target.files) {
+        loadFile(e.target.files[0]);
+    }
+});
 
 document.querySelector('.save').addEventListener('click', saveFile, {'capture': true});
+
+function stupidHackForLoadUploadDragThing() {
+    if (preventDefaults) {
+        let drop = document.querySelector('#loadUploadButton');
+
+        // disable default drag actions
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            drop.addEventListener(eventName, preventDefaults);
+        });
+
+        // technically we only need dragenter because we dont have any children but
+        // we'll do this just in case
+
+        // add highlight on drag
+        ['dragenter', 'dragover'].forEach(eventName => {
+            drop.addEventListener(eventName, () => {
+                drop.classList.add('highlight');
+            });
+        });
+
+        // remove highlight when drag is done
+        ['dragleave', 'drop'].forEach(eventName => {
+            drop.addEventListener(eventName, () => {
+                drop.classList.remove('highlight');
+            } );
+        });
+
+        // upload image on drop
+        drop.addEventListener('drop', (e) => {
+            loadFile(e.dataTransfer.files[0]);
+        });
+    } else {
+        setTimeout(stupidHackForLoadUploadDragThing, 100);
+    }
+}
+
+stupidHackForLoadUploadDragThing();

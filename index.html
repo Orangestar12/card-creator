@@ -14,7 +14,7 @@
     <!-- header  -->
     <div class="header centered">
         <button class="save big">Save Card</button>
-        <label for="loadUpload" class="button big">Load Card</label>
+        <label for="loadUpload" id="loadUploadButton" class="button big">Load Card</label>
         <button id="render" class="big">Render Image</button>
     </div>
     <div class="flex" style="justify-content:center;column-gap:16px;row-gap:16px">
@@ -237,6 +237,10 @@
 
     <div id="changelog">
         <h3>Changelog</h3>
+        <time datetime="2023-04-10">2023-04-10</time>
+        <ul>
+            <li>You can now drag a .card file onto the "Load Card" button to load it.</li>
+        </ul>
         <time datetime="2023-04-09">2023-04-09</time>
         <ul>
             <li>Added some error messages when CORS errors get thrown.</li>
