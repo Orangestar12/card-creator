@@ -324,14 +324,23 @@ body.noPortrait .portrait-alignment-box {
 .description {
     white-space: pre-wrap;
 }
-.description div {
+/* .description div {
     margin-top: 5px;
     min-height: 0.25em;
-}
+} */
 .description > div:first-child{
     margin-top: 0;
 }
 .description div.indented { margin-left: 16px; }
+
+.description .flex {
+    flex-wrap: nowrap;
+    justify-content: start;
+}
+.description .flex .icon {
+    flex-shrink: 0;
+    margin-top: 0.05em;
+}
 
 .description:hover::after {
     content: 'Click to edit description';
@@ -627,4 +636,20 @@ body.rendering #addTag {
 
 .tags {
     font-size: 12pt;
+}
+
+ul li {
+    padding: 0.5em 1ch;
+}
+
+ul li:nth-child(odd) {
+    background: #353535;
+}
+
+ul li b {
+    color: #F55;
+}
+
+a, a:visited {
+    color: #5AF;
 }

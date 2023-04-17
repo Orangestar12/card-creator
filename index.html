@@ -67,7 +67,7 @@
                         <p></p>
                         <p><span style="color:red">#</span>Effect Name<span style="color:red">:</span><span class="small"> It must have the colon!</span></p>
                         <p><span style="color:red">**</span>Markdown-style BOLD text.<span style="color:red">**</span></p>
-                        <p><span style="color:red">*</span>Flavor text blocks<br/><span class="small"> start with an asterisk.</span></p>
+                        <p><span style="color:red">></span>Flavor text blocks<br/><span class="small"> start with a greater-than.</span></p>
                         <p>Start a line with a space to<br/>super-indent it.</span></p>
                         <p></p>
                         <p><span style="color:red">[</span>Tags<span style="color:red">]</span></p>
@@ -77,15 +77,15 @@
                 </div>
             </div>
             <div class="bottom">
-                <style id="desc" scoped></style>
-                <div class="description box"><div><span class="bold">Perception:</span> When this card defends successfully, gain 1 <span class="icon token"></span><span class="bold">Clue</span>.</div><div class="centered flavor">Holmes is incredibly observant, moreso than his enemies tend to think.</div><div></div><div><span class="bold">Elementary:</span></div><div class="indented">Spend <span class="icon token"></span><span class="bold">Clues</span> equal to opposing card's <span class="icon def"></span>: Discard target immediately.</div><div></div><div><span class="bold">Mortal Enemy:</span></div><div class="indented">+<span class="icon atk"></span>2 VS <span class="char">Professor James Moriarty</span> <span class="fr">Sherlock Holmes</span></div><div class="indented">+<span class="icon atk"></span>1 VS other <span class="t">Criminal</span>s and <span class="t">Mastermind</span>s</div></div>
+                <style id="desc" scoped>.description > div > div{margin-top:5px;min-height:0.25em;}</style>
+                <div class="description box"><div><div><span class="bold">Perception:</span> When this card defends successfully, gain 1 <span class="icon token"></span><span class="bold">Clue</span>.</div><div class="centered flavor">Holmes is incredibly observant, moreso than his enemies tend to think.</div><div></div><div><span class="bold">Elementary:</span></div><div class="flex"><span class="icon addon"></span><div>Spend <span class="icon token"></span><span class="bold">Clues</span> equal to opposing card's <span class="icon def"></span>: Discard target immediately.</div></div><div></div><div><span class="bold">Mortal Enemy:</span></div><div class="indented"><div>+<span class="icon atk"></span>2 VS <span class="char">Professor James Moriarty</span> <span class="fr">Sherlock Holmes</span>.</div></div><div class="indented"><div>+<span class="icon atk"></span>1 VS other <span class="t">Criminal</span>s and <span class="t">Mastermind</span>s.</div></div></div></div>
                 <div class="quote box" contenteditable="true">No man burdens his mind with small matters unless he has some very good reason for doing so.</div>
             </div>
             <textarea class="hidden" id="markup">#Perception: When this card defends successfully, gain 1 [TOKEN]**Clue**.
-*Holmes is incredibly observant, moreso than his enemies tend to think.
+>Holmes is incredibly observant, moreso than his enemies tend to think.
 
 #Elementary:
- Spend [TOKEN]**Clues** equal to opposing card's [DEF]: Discard target immediately.
+[+]Spend [TOKEN]**Clues** equal to opposing card's [DEF]: Discard target immediately.
 
 #Mortal Enemy:
  +[ATK]2 VS ((Professor James Moriarty)) {Sherlock Holmes}.
@@ -239,8 +239,9 @@
         <h3>Changelog</h3>
         <time datetime="2023-04-17">2023-04-17</time>
         <ul>
-            <li>Regular indentations should make more sense. This is a <b>Breaking Change!</b></li>
-            <li>Indentations for addon text should make more sense. It no longer automatically indents. This is a <b>Breaking Change!</b></li>
+            <li>Completely rewrote the parser to be more secure and easier to edit/add on to in the future.</li>
+            <li>Regular indentations should make more sense. This is a <b>Breaking Change,</b> but only in the sense that you won't have to do 5 spaces at the start of a line to get 2 indents in anymore, just 2 spaces. Backwards compatibility will not save you.</li>
+            <li>Indentations for addon text should make more sense. It no longer automatically indents. This is a <b>Breaking Change!</b> If your addon lines look too far to the left, just add an indent on that line.</li>
             <li>Flavor text is now signified with a line starting with <code>&gt;</code> instead of <code>*</code>. This is a <b>Breaking Change!</b> The loader should apply backwards compatibility automatically for you.</li>
         </ul>
         <time datetime="2023-04-10">2023-04-10</time>
