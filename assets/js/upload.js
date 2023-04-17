@@ -12,7 +12,7 @@ const getBase64FromUrl = async (url) => {
             } else if(url.indexOf('localhost') != -1 || url.startsWith('file://')) {
                 toast('Hey, that\'s a local file! Cut it out. Drag the file in like a normal person.');
             }
-            console.log(url);
+            // console.log(url);
         }
         throw e;
     });

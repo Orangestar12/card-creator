@@ -46,7 +46,7 @@
 .light .target { background-image: url('/card-creator/assets/light/target.svg'); }
 
 .addon {
-    margin-left: 16px;
+    margin-left: -16px;
     background-image: url('/card-creator/assets/dark/addon.svg');
 }
 .light .addon { background-image: url('/card-creator/assets/light/addon.svg'); }

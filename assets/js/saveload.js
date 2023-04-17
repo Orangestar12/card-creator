@@ -60,7 +60,7 @@ async function saveFile() {
     await deferredJobSystem([
         [
             () => {
-                savedCard.version = 300; // 3.0.0
+                savedCard.version = 301; // 3.0.1
                 savedCard.title = card.title.firstElementChild.textContent;
                 savedCard.colorText = document.querySelector('.color');
                 savedCard.type = images.type.title.textContent;
@@ -309,6 +309,19 @@ async function parseCard(result) {
                     }
                     card.type.style.backgroundImage = savedCard.images.type;
                     card.container.style.backgroundImage = savedCard.images.bg;
+
+                    if (savedCard.version == 300) {
+                        let desc = [];
+                        let d = savedCard.description.split('\n');
+                        for (let line of d){
+                            if (line.startsWith('*')) {
+                                desc.push('>' + line.slice(1));
+                            } else {
+                                desc.push(line);
+                            }
+                        }
+                        savedCard.description = desc.join('\n');
+                    }
                 }
             },
             'Importing images...'

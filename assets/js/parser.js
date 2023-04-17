@@ -53,21 +53,30 @@ function processMarkup() {
     let newMarkup = []
 
     for (let line of markup) {
+        let output = '';
+        let indents = 0;
+
         if (line.startsWith('#')) {
             if (line.indexOf(':') != '-1') {
-                line = '<div><span class="bold">' + line.slice(1);
-                line = line.replace(':', ':</span>')
+                output = '<div><span class="bold">' + line.slice(1);
+                output = line.replace(':', ':</span>')
             }
         } else {
-            if (line.startsWith(' ')) {
-                line = '<div class="indented">' + line.slice(1);
-            } else if (line.startsWith('*')) {
-                line = '<div class="centered flavor">' + line.slice(1);
+            // TODO: multi-indent
+            while (line.startsWith(' ')) {
+                output += '<div class="indented">';
+                indents++;
+                line = line.slice(1);
+            }
+            if (line.startsWith('<span class="icon addon">')) {
+                output += '<div class="indented">';
+            } else if (line.startsWith('>') || line.startsWith('&gt;')) {
+                output = '<div class="centered flavor">' + line.slice(1);
             } else {
                 line = '<div>' + line;
             }
         }
-        line += '</div>';
+        output += line + '</div>';
         
         let regs = [
             [ // tags
@@ -97,7 +106,7 @@ function processMarkup() {
             let cls = reg[1];
             let count = reg[2];
 
-            while(line.match(regex)) {
+            while(output.match(regex)) {
                 let tag = line.match(regex);
                 let start = tag.indices[0][0];
                 let end = tag.indices[0][1];
@@ -105,19 +114,22 @@ function processMarkup() {
                     //escaped
                     continue;
                 } else {
-                    line = line.slice(0, start) +
+                    output = output.slice(0, start) +
                            '<span class="' +
                            cls +
                            '">' +
-                           line.slice(start + count, end - count) +
+                           output.slice(start + count, end - count) +
                            '</span>' +
-                           line.slice(end, line.length);
+                           output.slice(end, line.length);
                 }
             }
-
         }
 
-        newMarkup.push(line);
+        for(let i=0; i<indents; i++) {
+            output += '</div>';
+        }
+
+        newMarkup.push(output);
     }
 
     markup = newMarkup.join('');
