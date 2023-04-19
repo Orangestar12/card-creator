@@ -1,0 +1,264 @@
+@keyframes flyin {
+    from { transform: translate(-200%, -200%); }
+    to { transform: translate(0, 0); }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background: black;
+    color: white;
+    font: 12pt 'Open Sans', Arial, sans-serif;
+    text-align: center;
+}
+
+main {
+    display: block;
+    margin: 2em auto;
+    width: 625px;
+    position: relative;
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+}
+.column {
+    flex-direction: column;
+}
+
+.hidden {
+    display: none;
+}
+
+#bigCard {
+    position: fixed;
+    left: 0; right: 0;
+    top: 0; bottom: 0;
+
+    box-sizing:border-box;
+    border: 10vh solid transparent;
+
+    z-index: 999999;
+    cursor: pointer;
+
+    background-color: rgba(0,0,0,0.75);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.hand {
+    height: 110px;
+}
+
+.slot, .deck, .card, .effects {
+    width: 78.5px;
+    height: 110px;
+    flex-shrink: 0;
+}
+
+.dumbSlotGapHack {
+    flex-shrink: 0;
+    width: 12px;
+}
+
+.effects::after, .slot::after, .deck::after {
+    position: absolute;
+    left:50%;
+    top: 50%;
+    transform: translate(-50%, -50%);   
+}
+
+.effects {
+    width: 164px;
+    overflow-x: auto;
+}
+
+.slot, .deck, .effects {
+    position: relative;
+    margin: 18px;
+    border-radius: 12px;
+    outline: 6px solid white;
+}
+
+.slot span, .deck span, .effects span {
+    display: block;
+    position: absolute;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.slot::before /*, .card.hidden::before */{
+    content: '';
+    display: block;
+    position: absolute;
+    left:0;right:0;top:0;bottom:0;
+    /* pointer-events: none; */
+}
+
+.slot::before {
+    transform: rotate(90deg);
+    border-radius: 6px;
+    outline: 6px solid #FFFFFF88;
+    box-sizing: border-box;
+}
+
+.engineSlot::before {
+    content: none;
+}
+
+.card {
+    animation: flyin 500ms ease-out;
+    position: relative;
+    /* position: absolute;
+    left: 0;
+    top: 0; */
+    background-size: contain;
+    /* touch-action: pinch-zoom; */
+    transition: transform 250ms ease-out;
+}
+
+.card .tokens {
+    text-align: left;
+    position: absolute;
+    left: 0;
+    top: 28px;
+    right: 0;
+    bottom: 0;
+}
+
+.holder {
+    position: relative;
+}
+
+/* .card.hidden::before {
+    background-image: url('b1e075a483bb1dc5fa51f16d4d9ccead.jpg');
+    background-size: 100% 100%;
+} */
+
+.card.tapped {
+    transform: rotate(90deg);
+}
+
+.opponent {
+    transform: rotate(180deg);
+}
+
+
+.flex.lmao {
+    height: 0;
+}
+.slot.locationSlot {
+    transform: translate(-240px, -50%);
+}
+.slot.locationSlot::before {
+    content: none;
+}
+
+p {
+    margin: 1em 0;
+}
+
+.tiny {
+    font-size: 0.75em;
+}
+
+.tooltip, .modal {
+    display: block;
+    min-width: 1ch;
+    min-height: 1em;
+    padding: 0 2ch;
+    border-radius: 2ch;
+    background: white;
+    color: black;
+    box-shadow: 0 0 6px 2.5px rgba(0,0,0,0.95);
+    cursor: default;
+    z-index: 500;
+}
+.tooltip {
+    position:absolute;
+    white-space: pre-wrap;
+}
+.modal {
+    position: fixed;
+    max-width: 100vw;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.modal button {
+    appearance: none;
+    background: #7575FF;
+    color: white;
+    border-radius: 1ch;
+    font-size: 1.15em;
+    margin: 1ch;
+    padding: 0.5ch;
+}
+
+.tooltip.click {
+    cursor: pointer;
+}
+
+.tooltip .tiny {
+    text-align: right;
+}
+
+.inspectButton {
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    width: 24px;
+    height: 24px;
+    background-size: contain;
+    cursor: pointer;
+}
+
+.card:hover .inspectButton, .inspectButton:hover {
+    background-image: url('../assets/dark/search.svg');
+}
+
+.meta {
+    font-size:1.5em;
+    margin:0 0 0.5em;
+    justify-content:space-evenly;
+    padding: 0 145px;
+}
+
+.meta .icon {
+    height:1em;width:1em
+}
+
+.clickable {
+    cursor: pointer;
+}
+.chosen {
+    position: relative;
+    z-index: 500;
+    box-shadow: 0 0 12px 4px red;
+}
+.deck .holder, .deck .holder .card {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.deck .search {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 24px;
+    height: 24px;
+    background-size: contain;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.card > .card {
+    position: absolute; left: 0; top: 24px;
+}

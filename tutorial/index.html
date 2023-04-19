@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <title>Card Playground</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="./main.css" />
+    <link rel="stylesheet" href="../assets/css/icons.css" />
+    <meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1" />
+  </head>
+  <body>
+    <main>
+      <div id="opponent" class="flex column opponent">
+        <div class="flex front">
+          <div class="slot"><span>&lt;5</span></div>
+          <div class="dumbSlotGapHack"></div>
+          <div class="slot"><span>&lt;5</span></div>
+          <div class="dumbSlotGapHack"></div>
+          <div class="slot"><span>&lt;5</span></div>
+        </div>
+        <div class="flex back">
+          <div class="effects"><span>Effects</span></div>
+          <div class="slot"></div>
+          <div class="dumbSlotGapHack"></div>
+          <div class="slot"></div>
+          <div class="effects"><span>Effects</span></div>
+        </div>
+        <div class="flex cmd">
+          <div class="deck normal"><span>Deck</span></div>
+          <div class="deck tf"><span>Special Deck</span></div>
+          <div class="dumbSlotGapHack"></div>
+          <div class="commanderSlot slot"><span>Cmdr</span></div>
+          <div class="dumbSlotGapHack"></div>
+          <div class="engineSlot slot"><span>Engine</span></div>
+          <div class="deck discard"><span>Discard</span></div>
+        </div>
+        <div class="flex meta" style="transform:rotate(180deg)">
+          <div><span class="icon energy"></span><span id="oppEnergy">0</span></div>
+          <div><span class="icon def"></span><span id="oppHP">0</span></div>
+        </div>
+        <div class="flex hand"></div>
+      </div>
+      <div class="flex lmao">
+        <div class="slot locationSlot"><span>Location</span></div>
+      </div>
+      <div id="player" class="flex column">
+        <div class="flex front">
+          <div class="slot"><span>&lt;5</span></div>
+          <div class="dumbSlotGapHack"></div>
+          <div class="slot"><span>&lt;5</span></div>
+          <div class="dumbSlotGapHack"></div>
+          <div class="slot"><span>&lt;5</span></div>
+        </div>
+        <div class="flex back">
+          <div class="effects"><span>Effects</span></div>
+          <div class="slot"></div>
+          <div class="dumbSlotGapHack"></div>
+          <div class="slot"></div>
+          <div class="effects"><span>Effects</span></div>
+        </div>
+        <div class="flex cmd">
+          <div class="deck normal"><span>Deck</span></div>
+          <div class="deck tf"><span>Special Deck</span></div>
+          <div class="dumbSlotGapHack"></div>
+          <div class="commanderSlot slot"><span>Cmdr</span></div>
+          <div class="dumbSlotGapHack"></div>
+          <div class="engineSlot slot"><span>Engine</span></div>
+          <div class="deck discard"><span>Discard</span></div>
+        </div>
+        <div class="flex meta">
+          <div><span class="icon energy"></span><span id="playerEnergy">0</span></div>
+          <div><span class="icon def"></span><span id="playerHP">0</span></div>
+        </div>
+        <div class="flex hand"></div>
+      </div>
+    </main>
+    <div id="bigCard" class="hidden"></div>
+    <!-- <div id="cards"></div> -->
+    <!-- <input id="newCard" type="file" accept="image/*"/> -->
+    <script async type="module" src="./js/tutorial.js"></script>
+  </body>
+</html>
