@@ -653,3 +653,7 @@ ul li b {
 a, a:visited {
     color: #5AF;
 }
+
+.description > div > div:first-child {
+    margin-top: 0 !important;
+}
